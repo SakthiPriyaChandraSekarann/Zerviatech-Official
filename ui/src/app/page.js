@@ -1,9 +1,12 @@
 import Image from "next/image";
+import Header from "./Components/header";
 
 export default function Home() {
   return (
     <div>
-    <h1>Zervia Tech Solutions</h1>
+
+    <Header/>
+
     </div>
   );
 }
