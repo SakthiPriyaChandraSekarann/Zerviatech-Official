@@ -14,9 +14,9 @@ export default function Banner() {
           </p>
 
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight text-gray-900">
-            Innovative Software <br />
-            <span className="text-green-600">Solutions</span> for <br />
-            Modern Businesses
+            Delivering <br />
+            <span className="text-green-600">Digital </span> Excellence <br />
+            Globally
           </h1>
 
           <p className="mt-4 text-gray-600 max-w-lg mx-auto md:mx-0 text-sm sm:text-base">

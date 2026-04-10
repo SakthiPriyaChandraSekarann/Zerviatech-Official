@@ -45,12 +45,12 @@ const Header = () => {
           >
             Services
           </Link>
-          <Link
+          {/* <Link
             href="/product"
             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
           >
             Product
-          </Link>
+          </Link> */}
           <Link
             href="/academy"
             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
