@@ -10,13 +10,12 @@ import Banner from "./Components/banner";
 export default function Home() {
   return (
     <div>
-    <Banner/>
-    <LogoCarousel/>
-    <Abouthome/>
-    <Services/>
-    <Products/>
-    <TestimonialCarousel/>
-     
+      <Banner />
+      <LogoCarousel />
+      <Abouthome />
+      <Services />
+      <Products />
+      <TestimonialCarousel />
     </div>
   );
 }
