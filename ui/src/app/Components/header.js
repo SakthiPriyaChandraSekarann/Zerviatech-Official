@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex-shrink-0">
           <Link href="/" className="block">
             <Image
-              src="/zervialogo.png" // place your logo in public/logo.png
+              src="/logonew.png" // place your logo in public/logo.png
               alt="Zervia Tech"
               width={140}
               height={40}
@@ -40,7 +40,7 @@ const Header = () => {
             About Us
           </Link>
           <Link
-            href="/services"
+            href="/service"
             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
           >
             Services
@@ -52,7 +52,7 @@ const Header = () => {
             Product
           </Link> */}
           <Link
-            href="/academy"
+            href="/Academy"
             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
           >
             Academy
@@ -146,7 +146,7 @@ const Header = () => {
           Product
         </Link>
         <Link
-          href="/academy"
+          href="/Academy"
           className="block text-gray-500 font-medium"
           onClick={() => setIsOpen(false)}
         >
