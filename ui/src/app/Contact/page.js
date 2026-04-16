@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // Import the service we discussed (adjust the path based on where you saved apiServices.js)
-// import { sendContactMessage } from "@/services/apiServices"; 
+// import { sendContactMessage } from "@/services/apiServices";
 import { sendContactMessage } from "../apiServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,49 +18,49 @@ export default function ContactPage() {
 
   // 2. Handle Form Submission
 
-//   const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   setLoading(true);
+  //   const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
 
-//   const formData = new FormData(e.currentTarget);
-//   const data = Object.fromEntries(formData);
+  //   const formData = new FormData(e.currentTarget);
+  //   const data = Object.fromEntries(formData);
 
-//   try {
-//     const result = await sendContactMessage(data);
+  //   try {
+  //     const result = await sendContactMessage(data);
 
-//     if (result.success) {
-//       alert("✅ Message sent successfully!🚀🚀");
-//       e.currentTarget.reset(); 
-//     }
-//   } catch (error) {
-//     alert("❌ Failed to send message: " + error.message);
-//   } finally {
-//     setLoading(false);
-//   }
-// };
+  //     if (result.success) {
+  //       alert("✅ Message sent successfully!🚀🚀");
+  //       e.currentTarget.reset();
+  //     }
+  //   } catch (error) {
+  //     alert("❌ Failed to send message: " + error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  const form = e.currentTarget; // ✅ store reference first
+    const form = e.currentTarget; // ✅ store reference first
 
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
 
-  try {
-    const result = await sendContactMessage(data);
+    try {
+      const result = await sendContactMessage(data);
 
-    if (result.success) {
-      alert("✅ Message sent successfully!🚀");
-      form.reset(); // ✅ use stored reference
+      if (result.success) {
+        alert("✅ Message sent successfully!🚀");
+        form.reset(); // ✅ use stored reference
+      }
+    } catch (error) {
+      alert("❌ Failed to send message: " + error.message);
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    alert("❌ Failed to send message: " + error.message);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <div className="bg-[#f7f8fc] min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-6 md:py-10">
@@ -69,13 +69,13 @@ const handleSubmit = async (e) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <div className="text-center md:text-left">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-              Let's build the{" "}
-              <span className="text-green-500">future</span> together.
+              Let’s turn ideas into{" "}
+              <span className="text-green-500">reality.</span>
             </h1>
 
             <p className="text-gray-500 mt-4 max-w-md mx-auto md:mx-0 text-sm sm:text-base lg:text-lg">
-              Have a project in mind or want to say hi? We’re here to turn your
-              digital ideas into architectural masterpieces. Reach out today.
+              Every big product starts with a simple conversation. Tell us what
+              you’re thinking — we’ll shape it, build it, and bring it to life.
             </p>
 
             <div className="mt-6 space-y-2 text-xs sm:text-sm lg:text-base">
@@ -99,7 +99,6 @@ const handleSubmit = async (e) => {
 
         {/* Middle Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mt-10 lg:mt-14">
-          
           {/* LEFT - FORM */}
           <div className="lg:col-span-2 bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-md">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-6 text-[#1e2a5a]">
@@ -154,19 +153,19 @@ const handleSubmit = async (e) => {
           <div className="flex flex-col gap-5">
             <div className="bg-[#1e2a5a] text-white p-5 sm:p-6 rounded-2xl shadow-md">
               <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-3">
-                Visit Our Studio
+                Location
               </h3>
               <p className="text-sm sm:text-base opacity-80 leading-relaxed">
-                27643, Jupiter St, 6th Street,
+                773A/1, (Upstair)
                 <br />
-                Indira Nagar 1st Cross, KTC Nagar,
+                8th Street, Indira Nagar 1st Cross
                 <br />
+                K.T.C. Nagar, Tirunelveli - 627 011
+                <br/>
                 Tamil Nadu - 627011
               </p>
 
-              <button className="mt-4 text-green-400 text-sm sm:text-base hover:underline">
-                Get Directions →
-              </button>
+          
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-md h-40 sm:h-48 lg:h-56">
@@ -183,17 +182,41 @@ const handleSubmit = async (e) => {
               </p>
 
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-blue-100 transition">
-                  <FontAwesomeIcon icon={faFacebookF} className="text-blue-600 text-sm" />
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-blue-100 transition"
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebookF}
+                    className="text-blue-600 text-sm"
+                  />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
-                  <FontAwesomeIcon icon={faInstagram} className="text-pink-500 text-sm" />
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+                >
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    className="text-pink-500 text-sm"
+                  />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-blue-200 transition">
-                  <FontAwesomeIcon icon={faLinkedinIn} className="text-blue-700 text-sm" />
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-blue-200 transition"
+                >
+                  <FontAwesomeIcon
+                    icon={faLinkedinIn}
+                    className="text-blue-700 text-sm"
+                  />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-sky-100 transition">
-                  <FontAwesomeIcon icon={faTwitter} className="text-sky-500 text-sm" />
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-sky-100 transition"
+                >
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    className="text-sky-500 text-sm"
+                  />
                 </a>
               </div>
             </div>
