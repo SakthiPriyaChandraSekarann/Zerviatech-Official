@@ -25,7 +25,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -44,4 +44,40 @@ body {
 
 .pause-animation {
   animation-play-state: paused;
+}
+
+#flip {
+  height: 1.2em; /* Matches the text line height */
+  overflow: hidden;
+}
+
+#flip > div > div {
+  height: 1.2em; /* Each word block takes exactly this much height */
+  display: flex;
+  align-items: center;
+}
+
+#flip div:first-child {
+  animation: show 8s linear infinite;
+}
+
+@keyframes show {
+  /* 4 words: Reality (0-20%), Innovation (25-45%), Solutions (50-70%), Excellence (75-95%) */
+  0%, 20% { margin-top: 0; }
+  25%, 45% { margin-top: -1.2em; }
+  50%, 70% { margin-top: -2.4em; }
+  75%, 95% { margin-top: -3.6em; }
+  100% { margin-top: 0; }
+}
+
+.text-wrapper {
+  overflow: hidden;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+
+.text-list {
+  display: flex;
+  flex-direction: column;
+  animation: show 8s infinite;
 }

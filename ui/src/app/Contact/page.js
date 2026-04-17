@@ -1,8 +1,975 @@
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { sendContactMessage } from "../apiServices";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faFacebookF,
+//   faInstagram,
+//   faLinkedinIn,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
+// import { FiPhone, FiMail } from "react-icons/fi";
+
+// export default function ContactPage() {
+//   const [loading, setLoading] = useState(false);
+
+//   // ✅ FIXED ANIME (dynamic import)
+//   useEffect(() => {
+//     const runAnimation = async () => {
+//       const animeModule = await import("animejs");
+//       const anime = animeModule.animate || animeModule.default || animeModule;
+
+//       anime({
+//         targets: ".hero-title",
+//         translateY: [40, 0],
+//         opacity: [0, 1],
+//         duration: 900,
+//         easing: "easeOutExpo",
+//       });
+
+//       anime({
+//         targets: ".hero-subtitle",
+//         translateY: [30, 0],
+//         opacity: [0, 1],
+//         delay: 200,
+//         duration: 900,
+//         easing: "easeOutExpo",
+//       });
+
+//       anime({
+//         targets:
+//           ".form-fields input, .form-fields textarea, .form-fields button",
+//         translateY: [20, 0],
+//         opacity: [0, 1],
+//         delay: anime.stagger ? anime.stagger(100) : 100,
+//         duration: 700,
+//         easing: "easeOutQuad",
+//       });
+
+//       anime({
+//         targets: ".faq-card",
+//         translateY: [20, 0],
+//         opacity: [0, 1],
+//         delay: anime.stagger ? anime.stagger(120) : 120,
+//         duration: 700,
+//         easing: "easeOutQuad",
+//       });
+//     };
+
+//     runAnimation();
+//   }, []);
+
+//   // ✅ hover animation FIXED
+//   const handleHover = async (el) => {
+//     const animeModule = await import("animejs");
+//     const anime = animeModule.animate || animeModule.default || animeModule;
+
+//     anime({
+//       targets: el,
+//       scale: 1.04,
+//       duration: 200,
+//       easing: "easeOutQuad",
+//     });
+//   };
+
+//   const handleLeave = async (el) => {
+//     const animeModule = await import("animejs");
+//     const anime = animeModule.animate || animeModule.default || animeModule;
+
+//     anime({
+//       targets: el,
+//       scale: 1,
+//       duration: 200,
+//       easing: "easeOutQuad",
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     const form = e.currentTarget;
+//     const formData = new FormData(form);
+//     const data = Object.fromEntries(formData);
+
+//     try {
+//       const result = await sendContactMessage(data);
+
+//       if (result.success) {
+//         alert("✅ Message sent successfully!🚀");
+//         form.reset();
+
+//         // ✅ success animation FIXED
+//         const animeModule = await import("animejs");
+//         const anime = animeModule.animate || animeModule.default || animeModule;
+
+//         anime({
+//           targets: form,
+//           scale: [1, 0.98, 1],
+//           duration: 400,
+//           easing: "easeInOutQuad",
+//         });
+//       }
+//     } catch (error) {
+//       alert("❌ Failed to send message: " + error.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="bg-[] min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-6 md:py-10">
+//       <div className="max-w-7xl mx-auto">
+//         {/* Top Section */}
+//         <div className="flex justify-center items-center min-h-[60vh] px-4">
+//           <div className="text-center max-w-2xl">
+//             <h1 className="hero-title flex flex-wrap justify-center items-baseline gap-x-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-center">
+//               <span>Let’s turn ideas into</span>
+
+//               <span className="relative inline-flex items-baseline">
+//                 <div
+//                   id="flip"
+//                   className="overflow-hidden leading-tight h-[1em]"
+//                 >
+//                   <div className="text-[#632e87] animate-flip">
+//                     <div className="h-[1em] flex items-center justify-center">
+//                       Digital Excellence!
+//                     </div>
+//                     <div className="h-[1em] flex items-center justify-center">
+//                       Innovation!
+//                     </div>
+//                     <div className="h-[1em] flex items-center justify-center">
+//                       Solutions!
+//                     </div>
+//                     <div className="h-[1em] flex items-center justify-center">
+//                       Reality!
+//                     </div>
+//                   </div>
+//                 </div>
+//               </span>
+//             </h1>
+
+//             <p className="hero-subtitle text-gray-500 mt-4 text-sm sm:text-base lg:text-xl">
+//               Every big product starts with a simple conversation. Tell us what
+//               you’re thinking — we’ll shape it, build it, and bring it to life.
+//             </p>
+
+//             <div className="mt-6 space-y-3 text-xs sm:text-sm lg:text-lg flex flex-col items-center">
+//               <div className="flex items-center gap-2">
+//                 <FiPhone className="text-[#632e87] text-xl" />
+//                 <span className="text-xl">+91 9486305577</span>
+//                 <FiMail className="text-[#632e87] text-xl" />
+//                 <span className="text-xl">contactus@zerviatech.com</span>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Middle Section */}
+//         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mt-10 lg:mt-14">
+//           {/* LEFT - FORM */}
+//           <div className="lg:col-span-2 bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-md">
+//             <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">
+//               Get In Touch
+//             </h2>
+
+//             <form onSubmit={handleSubmit} className="space-y-4 form-fields">
+//               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                 <input
+//                   name="name"
+//                   type="text"
+//                   placeholder="Your Name"
+//                   required
+//                   className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//                 />
+//                 <input
+//                   name="email"
+//                   type="email"
+//                   placeholder="Email Address"
+//                   required
+//                   className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//                 />
+//               </div>
+
+//               <input
+//                 name="phone"
+//                 type="tel"
+//                 placeholder="Phone Number"
+//                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//               />
+
+//               <textarea
+//                 name="message"
+//                 rows={5}
+//                 placeholder="Your Message"
+//                 required
+//                 className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//               />
+
+//               <button
+//                 type="submit"
+//                 disabled={loading}
+//                 className="w-full bg-[#632e87] text-white py-3 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#16204a] transition duration-300 disabled:opacity-50"
+//               >
+//                 {loading ? "Sending..." : "Send Message"}
+//               </button>
+//             </form>
+//           </div>
+
+//           {/* RIGHT SIDE */}
+//           <div className="flex flex-col gap-5">
+//             <div className="bg-[#632e87] text-white p-5 sm:p-6 rounded-2xl shadow-md">
+//               <h3 className="text-base sm:text-lg lg:text-2xl font-medium mb-3">
+//                 Location
+//               </h3>
+//               <p className="text-sm sm:text-base opacity-80 leading-relaxed">
+//                 773A/1, (Upstair)
+//                 <br />
+//                 8th Street, Indira Nagar 1st Cross
+//                 <br />
+//                 K.T.C. Nagar, Tirunelveli - 627 011
+//                 <br />
+//                 Tamil Nadu - 627011
+//               </p>
+//             </div>
+
+//             <div className="rounded-2xl overflow-hidden shadow-md h-40 sm:h-48 lg:h-56">
+//               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.7548308071514!2d77.77269657477666!3d8.714815791334537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b040dcdff14a163%3A0x35457e93fbc519f4!2sZervia%20Tech%20Solutions!5e0!3m2!1sen!2sin!4v1776402249847!5m2!1sen!2sin" 
+//                className="w-full h-full border-0"
+//                 loading="lazy" 
+//                 />
+//             </div>
+
+//             {/* Social Networks */}
+//             <div className="bg-[#632e87] p-5 sm:p-6 rounded-2xl">
+//               <p className="text-base sm:text-lg lg:text-2xl mb-3 text-white font-medium">
+//                 Social Networks
+//               </p>
+
+//               <div className="flex gap-4">
+//                 <a
+//                   href="https://www.facebook.com/share/1A9agKPn2Z/"
+//                   className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                 >
+//                   <FontAwesomeIcon
+//                     icon={faFacebookF}
+//                     className="text-blue-600 text-sm"
+//                   />
+//                 </a>
+//                 <a
+//                   href="https://www.instagram.com/zerviatechsolutions/"
+//                   className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                 >
+//                   <FontAwesomeIcon
+//                     icon={faInstagram}
+//                     className="text-pink-500 text-sm"
+//                   />
+//                 </a>
+//                 <a
+//                   href="https://www.linkedin.com/company/zervia-tech-solutions/"
+//                   className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                 >
+//                   <FontAwesomeIcon
+//                     icon={faLinkedinIn}
+//                     className="text-blue-700 text-sm"
+//                   />
+//                 </a>
+//                 <a
+//                   href="https://x.com/Zerviaacademy"
+//                   className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                 >
+//                   <FontAwesomeIcon
+//                     icon={faTwitter}
+//                     className="text-sky-500 text-sm"
+//                   />
+//                 </a>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* FAQ Section */}
+//         <div className="mt-12 lg:mt-16">
+//           {/* <h2 className="text-base sm:text-lg lg:text-xl font-semibold mb-6">
+//             FAQs
+//           </h2> */}
+//              <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">
+//               FAQ
+//             </h2>
+
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+//             {[
+//               {
+//                 question: "Do you build both web and mobile apps?",
+//                 answer:
+//                   "Yes. We design and develop scalable web platforms and mobile applications tailored to your business needs.",
+//               },
+//               {
+//                 question: "Will my idea be kept confidential?",
+//                 answer: "100%. Your data and ideas are secure with us.",
+//               },
+//               {
+//                 question: "Do you work with clients outside India?",
+//                 answer: "Yes, we collaborate globally.",
+//               },
+//             ].map((item, index) => (
+//               <div
+//                 key={index}
+//                 onMouseEnter={(e) => handleHover(e.currentTarget)}
+//                 onMouseLeave={(e) => handleLeave(e.currentTarget)}
+//                 className="faq-card group bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300"
+//               >
+//                 <div className="w-10 h-1 bg-[#632e87] rounded mb-4"></div>
+
+//                 <p className="font-semibold text-gray-800 text-2xl">{item.question}</p>
+
+//                 <p className="text-gray-500 mt-3 text-xl">{item.answer}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { sendContactMessage } from "../apiServices";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faFacebookF,
+//   faInstagram,
+//   faLinkedinIn,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
+// import { FiPhone, FiMail } from "react-icons/fi";
+
+// export default function ContactPage() {
+//   const [loading, setLoading] = useState(false);
+//   const [showSuccess, setShowSuccess] = useState(false);
+
+//   // ✅ ENTRY ANIMATIONS
+//   useEffect(() => {
+//     const runAnimation = async () => {
+//       const animeModule = await import("animejs");
+//       const anime = animeModule.animate || animeModule.default || animeModule;
+
+//       anime({
+//         targets: ".hero-title",
+//         translateY: [40, 0],
+//         opacity: [0, 1],
+//         duration: 900,
+//         easing: "easeOutExpo",
+//       });
+
+//       anime({
+//         targets: ".hero-subtitle",
+//         translateY: [30, 0],
+//         opacity: [0, 1],
+//         delay: 200,
+//         duration: 900,
+//         easing: "easeOutExpo",
+//       });
+
+//       anime({
+//         targets: ".form-fields input, .form-fields textarea, .form-fields button",
+//         translateY: [20, 0],
+//         opacity: [0, 1],
+//         delay: anime.stagger ? anime.stagger(100) : 100,
+//         duration: 700,
+//         easing: "easeOutQuad",
+//       });
+
+//       anime({
+//         targets: ".faq-card",
+//         translateY: [20, 0],
+//         opacity: [0, 1],
+//         delay: anime.stagger ? anime.stagger(120) : 120,
+//         duration: 700,
+//         easing: "easeOutQuad",
+//       });
+//     };
+
+//     runAnimation();
+//   }, []);
+
+//   // ✅ SUCCESS FLIGHT ANIMATION
+//   useEffect(() => {
+//     if (showSuccess) {
+//       const runSuccessAnim = async () => {
+//         const animeModule = await import("animejs");
+//         const anime = animeModule.animate || animeModule.default || animeModule;
+
+//         // Paper plane flight path
+//         anime({
+//           targets: ".success-plane",
+//           translateX: [0, 600],
+//           translateY: [0, -600],
+//           rotate: [0, 20],
+//           opacity: [0, 1, 0],
+//           duration: 2500,
+//           easing: "easeOutQuart",
+//         });
+
+//         // Text reveal
+//         anime({
+//           targets: ".success-message",
+//           scale: [0.8, 1],
+//           opacity: [0, 1],
+//           delay: 300,
+//           duration: 800,
+//           easing: "easeOutElastic(1, .8)",
+//         });
+//       };
+//       runSuccessAnim();
+//     }
+//   }, [showSuccess]);
+
+//   const handleHover = async (el) => {
+//     const animeModule = await import("animejs");
+//     const anime = animeModule.animate || animeModule.default || animeModule;
+
+//     anime({
+//       targets: el,
+//       scale: 1.04,
+//       duration: 200,
+//       easing: "easeOutQuad",
+//     });
+//   };
+
+//   const handleLeave = async (el) => {
+//     const animeModule = await import("animejs");
+//     const anime = animeModule.animate || animeModule.default || animeModule;
+
+//     anime({
+//       targets: el,
+//       scale: 1,
+//       duration: 200,
+//       easing: "easeOutQuad",
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     const form = e.currentTarget;
+//     const formData = new FormData(form);
+//     const data = Object.fromEntries(formData);
+
+//     try {
+//       const result = await sendContactMessage(data);
+
+//       if (result.success) {
+//         setShowSuccess(true);
+//         form.reset();
+//         // Hide overlay after 5 seconds
+//         setTimeout(() => setShowSuccess(false), 5000);
+//       }
+//     } catch (error) {
+//       alert("❌ Failed to send message: " + error.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="relative overflow-hidden">
+//       {/* ✅ SUCCESS ANIMATION OVERLAY */}
+//       {showSuccess && (
+//         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/40 backdrop-blur-md">
+//           <div className="relative text-center p-10">
+//             {/* Flying Plane Image */}
+//             <img
+//               src="/email.png"
+//               className="success-plane absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 opacity-0 pointer-events-none"
+//               alt="Flying Plane"
+//             />
+            
+//             <div className="success-message opacity-0">
+//               <h2 className="text-4xl md:text-5xl font-bold text-[#632e87] mb-4">Hurrah!</h2>
+//               <p className="text-xl md:text-2xl text-gray-800 font-medium">
+//                 Your message just landed successfully! <br />
+//                 We’ll contact you soon.
+//               </p>
+//               <button 
+//                 onClick={() => setShowSuccess(false)}
+//                 className="mt-8 px-8 py-2 border-2 border-[#632e87] text-[#632e87] rounded-full hover:bg-[#632e87] hover:text-white transition-colors"
+//               >
+//                 Awesome!
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* ✅ MAIN CONTENT */}
+//       <div className={`transition-all duration-500 ${showSuccess ? "blur-lg scale-95 opacity-50 pointer-events-none" : ""}`}>
+//         <div className="bg-[] min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-6 md:py-10">
+//           <div className="max-w-7xl mx-auto">
+//             {/* Top Section */}
+//             <div className="flex justify-center items-center min-h-[60vh] px-4">
+//               <div className="text-center max-w-2xl">
+//                 <h1 className="hero-title flex flex-wrap justify-center items-baseline gap-x-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-center">
+//                   <span>Let’s turn ideas into</span>
+
+//                   <span className="relative inline-flex items-baseline">
+//                     <div id="flip" className="overflow-hidden leading-tight h-[1em]">
+//                       <div className="text-[#632e87] animate-flip">
+//                         <div className="h-[1em] flex items-center justify-center">Digital Excellence!</div>
+//                         <div className="h-[1em] flex items-center justify-center">Innovation!</div>
+//                         <div className="h-[1em] flex items-center justify-center">Solutions!</div>
+//                         <div className="h-[1em] flex items-center justify-center">Reality!</div>
+//                       </div>
+//                     </div>
+//                   </span>
+//                 </h1>
+
+//                 <p className="hero-subtitle text-gray-500 mt-4 text-sm sm:text-base lg:text-xl">
+//                   Every big product starts with a simple conversation. Tell us what you’re thinking — we’ll shape it, build it, and bring it to life.
+//                 </p>
+
+//                 <div className="mt-6 space-y-3 text-xs sm:text-sm lg:text-lg flex flex-col items-center">
+//                   <div className="flex items-center gap-2">
+//                     <FiPhone className="text-[#632e87] text-xl" />
+//                     <span className="text-xl">+91 9486305577</span>
+//                     <FiMail className="text-[#632e87] text-xl" />
+//                     <span className="text-xl">contactus@zerviatech.com</span>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* Middle Section */}
+//             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mt-10 lg:mt-14">
+//               {/* LEFT - FORM */}
+//               <div className="lg:col-span-2 bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-md">
+//                 <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">Get In Touch</h2>
+
+//                 <form onSubmit={handleSubmit} className="space-y-4 form-fields">
+//                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                     <input
+//                       name="name"
+//                       type="text"
+//                       placeholder="Your Name"
+//                       required
+//                       className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//                     />
+//                     <input
+//                       name="email"
+//                       type="email"
+//                       placeholder="Email Address"
+//                       required
+//                       className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//                     />
+//                   </div>
+
+//                   <input
+//                     name="phone"
+//                     type="tel"
+//                     placeholder="Phone Number"
+//                     className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//                   />
+
+//                   <textarea
+//                     name="message"
+//                     rows={5}
+//                     placeholder="Your Message"
+//                     required
+//                     className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+//                   />
+
+//                   <button
+//                     type="submit"
+//                     disabled={loading}
+//                     className="w-full bg-[#632e87] text-white py-3 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#16204a] transition duration-300 disabled:opacity-50"
+//                   >
+//                     {loading ? "Sending..." : "Send Message"}
+//                   </button>
+//                 </form>
+//               </div>
+
+//               {/* RIGHT SIDE */}
+//               <div className="flex flex-col gap-5">
+//                 <div className="bg-[#632e87] text-white p-5 sm:p-6 rounded-2xl shadow-md">
+//                   <h3 className="text-base sm:text-lg lg:text-2xl font-medium mb-3">Location</h3>
+//                   <p className="text-sm sm:text-base opacity-80 leading-relaxed">
+//                     773A/1, (Upstair)
+//                     <br />
+//                     8th Street, Indira Nagar 1st Cross
+//                     <br />
+//                     K.T.C. Nagar, Tirunelveli - 627 011
+//                     <br />
+//                     Tamil Nadu - 627011
+//                   </p>
+//                 </div>
+
+//                 <div className="rounded-2xl overflow-hidden shadow-md h-40 sm:h-48 lg:h-56">
+//                   <iframe
+//                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.7548308071514!2d77.77269657477666!3d8.714815791334537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b040dcdff14a163%3A0x35457e93fbc519f4!2sZervia%20Tech%20Solutions!5e0!3m2!1sen!2sin!4v1776402249847!5m2!1sen!2sin"
+//                     className="w-full h-full border-0"
+//                     loading="lazy"
+//                   />
+//                 </div>
+
+//                 {/* Social Networks */}
+//                 <div className="bg-[#632e87] p-5 sm:p-6 rounded-2xl">
+//                   <p className="text-base sm:text-lg lg:text-2xl mb-3 text-white font-medium">Social Networks</p>
+//                   <div className="flex gap-4">
+//                     <a
+//                       href="https://www.facebook.com/share/1A9agKPn2Z/"
+//                       className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                     >
+//                       <FontAwesomeIcon icon={faFacebookF} className="text-blue-600 text-sm" />
+//                     </a>
+//                     <a
+//                       href="https://www.instagram.com/zerviatechsolutions/"
+//                       className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                     >
+//                       <FontAwesomeIcon icon={faInstagram} className="text-pink-500 text-sm" />
+//                     </a>
+//                     <a
+//                       href="https://www.linkedin.com/company/zervia-tech-solutions/"
+//                       className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                     >
+//                       <FontAwesomeIcon icon={faLinkedinIn} className="text-blue-700 text-sm" />
+//                     </a>
+//                     <a
+//                       href="https://x.com/Zerviaacademy"
+//                       className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
+//                     >
+//                       <FontAwesomeIcon icon={faTwitter} className="text-sky-500 text-sm" />
+//                     </a>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* FAQ Section */}
+//             <div className="mt-12 lg:mt-16">
+//               <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">FAQ</h2>
+//               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {[
+//                   {
+//                     question: "Do you build both web and mobile apps?",
+//                     answer: "Yes. We design and develop scalable web platforms and mobile applications tailored to your business needs.",
+//                   },
+//                   {
+//                     question: "Will my idea be kept confidential?",
+//                     answer: "100%. Your data and ideas are secure with us.",
+//                   },
+//                   {
+//                     question: "Do you work with clients outside India?",
+//                     answer: "Yes, we collaborate globally.",
+//                   },
+//                 ].map((item, index) => (
+//                   <div
+//                     key={index}
+//                     onMouseEnter={(e) => handleHover(e.currentTarget)}
+//                     onMouseLeave={(e) => handleLeave(e.currentTarget)}
+//                     className="faq-card group bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300"
+//                   >
+//                     <div className="w-10 h-1 bg-[#632e87] rounded mb-4"></div>
+//                     <p className="font-semibold text-gray-800 text-2xl">{item.question}</p>
+//                     <p className="text-gray-500 mt-3 text-xl">{item.answer}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { sendContactMessage } from "../apiServices";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faFacebookF,
+//   faInstagram,
+//   faLinkedinIn,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
+// import { FiPhone, FiMail } from "react-icons/fi";
+
+// export default function ContactPage() {
+//   const [loading, setLoading] = useState(false);
+//   const [showSuccess, setShowSuccess] = useState(false);
+
+//   // ✅ ENTRY ANIMATIONS (On Page Load)
+//   useEffect(() => {
+//     const runAnimation = async () => {
+//       const animeModule = await import("animejs");
+//       const anime = animeModule.animate || animeModule.default || animeModule;
+
+//       anime({
+//         targets: ".hero-title",
+//         translateY: [40, 0],
+//         opacity: [0, 1],
+//         duration: 900,
+//         easing: "easeOutExpo",
+//       });
+
+//       anime({
+//         targets: ".hero-subtitle",
+//         translateY: [30, 0],
+//         opacity: [0, 1],
+//         delay: 200,
+//         duration: 900,
+//         easing: "easeOutExpo",
+//       });
+
+//       anime({
+//         targets: ".form-fields input, .form-fields textarea, .form-fields button",
+//         translateY: [20, 0],
+//         opacity: [0, 1],
+//         delay: anime.stagger ? anime.stagger(100) : 100,
+//         duration: 700,
+//         easing: "easeOutQuad",
+//       });
+
+//       anime({
+//         targets: ".faq-card",
+//         translateY: [20, 0],
+//         opacity: [0, 1],
+//         delay: anime.stagger ? anime.stagger(120) : 120,
+//         duration: 700,
+//         easing: "easeOutQuad",
+//       });
+//     };
+
+//     runAnimation();
+//   }, []);
+
+//   // ✅ SUCCESS FLIGHT ANIMATION (Triggered on Success)
+//   useEffect(() => {
+//     if (showSuccess) {
+//       const runSuccessAnim = async () => {
+//         const animeModule = await import("animejs");
+//         const anime = animeModule.animate || animeModule.default || animeModule;
+
+//         // Paper plane flight: From bottom-left to top-right
+//         anime({
+//           targets: ".success-plane",
+//           translateX: [-200, 800],
+//           translateY: [200, -800],
+//           rotate: [-15, 30],
+//           opacity: {
+//             value: [0, 1, 0],
+//             duration: 2000,
+//             easing: 'linear'
+//           },
+//           duration: 2500,
+//           easing: "easeOutCubic",
+//         });
+
+//         // Success message text fade-in
+//         anime({
+//           targets: ".success-content",
+//           scale: [0.9, 1],
+//           opacity: [0, 1],
+//           delay: 500,
+//           duration: 1000,
+//           easing: "easeOutElastic(1, .8)",
+//         });
+//       };
+//       runSuccessAnim();
+//     }
+//   }, [showSuccess]);
+
+//   const handleHover = async (el) => {
+//     const animeModule = await import("animejs");
+//     const anime = animeModule.animate || animeModule.default || animeModule;
+//     anime({ targets: el, scale: 1.04, duration: 200, easing: "easeOutQuad" });
+//   };
+
+//   const handleLeave = async (el) => {
+//     const animeModule = await import("animejs");
+//     const anime = animeModule.animate || animeModule.default || animeModule;
+//     anime({ targets: el, scale: 1, duration: 200, easing: "easeOutQuad" });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     const form = e.currentTarget;
+//     const formData = new FormData(form);
+//     const data = Object.fromEntries(formData);
+
+//     try {
+//       const result = await sendContactMessage(data);
+
+//       if (result.success) {
+//         setShowSuccess(true);
+//         form.reset();
+//         // Overlay clears automatically after 5 seconds
+//         setTimeout(() => setShowSuccess(false), 5000);
+//       }
+//     } catch (error) {
+//       alert("❌ Failed to send message: " + error.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="relative">
+//       {/* ✅ SUCCESS OVERLAY WITH FLYING PLANE */}
+//       {showSuccess && (
+//         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/20 backdrop-blur-xl overflow-hidden">
+//           {/* The Flying Plane */}
+//           <img
+//             src="/email.png"
+//             className="success-plane absolute w-24 h-24 pointer-events-none z-10"
+//             alt="Paper Plane"
+//           />
+          
+//           {/* The Message Box */}
+//           <div className="success-content text-center p-8 bg-white/90 rounded-3xl shadow-2xl border border-purple-100 max-w-md mx-4 opacity-0">
+//             <h2 className="text-4xl font-bold text-[#632e87] mb-4">Hurrah!</h2>
+//             <p className="text-xl text-gray-700 font-medium leading-relaxed">
+//               Your message just landed successfully!<br />
+//               <span className="text-[#632e87]">We’ll contact you soon.</span>
+//             </p>
+//             <button 
+//               onClick={() => setShowSuccess(false)}
+//               className="mt-8 px-10 py-3 bg-[#632e87] text-white rounded-full font-bold shadow-lg hover:bg-[#4d2369] transition-all"
+//             >
+//               Close
+//             </button>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* ✅ MAIN CONTENT WRAPPER (Blurs when success) */}
+//       <div className={`transition-all duration-700 ${showSuccess ? "blur-md scale-95 opacity-40 pointer-events-none" : "blur-0 scale-100 opacity-100"}`}>
+//         <div className="bg-[] min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-6 md:py-10">
+//           <div className="max-w-7xl mx-auto">
+//             {/* Top Section */}
+//             <div className="flex justify-center items-center min-h-[60vh] px-4">
+//               <div className="text-center max-w-2xl">
+//                 <h1 className="hero-title flex flex-wrap justify-center items-baseline gap-x-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-center">
+//                   <span>Let’s turn ideas into</span>
+//                   <span className="relative inline-flex items-baseline">
+//                     <div id="flip" className="overflow-hidden leading-tight h-[1em]">
+//                       <div className="text-[#632e87] animate-flip">
+//                         <div className="h-[1em] flex items-center justify-center">Digital Excellence!</div>
+//                         <div className="h-[1em] flex items-center justify-center">Innovation!</div>
+//                         <div className="h-[1em] flex items-center justify-center">Solutions!</div>
+//                         <div className="h-[1em] flex items-center justify-center">Reality!</div>
+//                       </div>
+//                     </div>
+//                   </span>
+//                 </h1>
+//                 <p className="hero-subtitle text-gray-500 mt-4 text-sm sm:text-base lg:text-xl">
+//                   Every big product starts with a simple conversation. Tell us what you’re thinking — we’ll shape it, build it, and bring it to life.
+//                 </p>
+//                 <div className="mt-6 space-y-3 text-xs sm:text-sm lg:text-lg flex flex-col items-center">
+//                   <div className="flex items-center gap-2">
+//                     <FiPhone className="text-[#632e87] text-xl" />
+//                     <span className="text-xl">+91 9486305577</span>
+//                     <FiMail className="text-[#632e87] text-xl" />
+//                     <span className="text-xl">contactus@zerviatech.com</span>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* Middle Section */}
+//             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mt-10 lg:mt-14">
+//               {/* LEFT - FORM */}
+//               <div className="lg:col-span-2 bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-md">
+//                 <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">Get In Touch</h2>
+//                 <form onSubmit={handleSubmit} className="space-y-4 form-fields">
+//                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                     <input name="name" type="text" placeholder="Your Name" required className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+//                     <input name="email" type="email" placeholder="Email Address" required className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+//                   </div>
+//                   <input name="phone" type="tel" placeholder="Phone Number" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+//                   <textarea name="message" rows={5} placeholder="Your Message" required className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+//                   <button type="submit" disabled={loading} className="w-full bg-[#632e87] text-white py-3 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#16204a] transition duration-300 disabled:opacity-50">
+//                     {loading ? "Sending..." : "Send Message"}
+//                   </button>
+//                 </form>
+//               </div>
+
+//               {/* RIGHT SIDE */}
+//               <div className="flex flex-col gap-5">
+//                 <div className="bg-[#632e87] text-white p-5 sm:p-6 rounded-2xl shadow-md">
+//                   <h3 className="text-base sm:text-lg lg:text-2xl font-medium mb-3">Location</h3>
+//                   <p className="text-sm sm:text-base opacity-80 leading-relaxed">
+//                     773A/1, (Upstair)<br />
+//                     8th Street, Indira Nagar 1st Cross<br />
+//                     K.T.C. Nagar, Tirunelveli - 627 011<br />
+//                     Tamil Nadu - 627011
+//                   </p>
+//                 </div>
+//                 <div className="rounded-2xl overflow-hidden shadow-md h-40 sm:h-48 lg:h-56">
+//                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.7548308071514!2d77.77269657477666!3d8.714815791334537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b040dcdff14a163%3A0x35457e93fbc519f4!2sZervia%20Tech%20Solutions!5e0!3m2!1sen!2sin!4v1776402249847!5m2!1sen!2sin" className="w-full h-full border-0" loading="lazy" />
+//                 </div>
+//                 <div className="bg-[#632e87] p-5 sm:p-6 rounded-2xl">
+//                   <p className="text-base sm:text-lg lg:text-2xl mb-3 text-white font-medium">Social Networks</p>
+//                   <div className="flex gap-4">
+//                     <a href="https://www.facebook.com/share/1A9agKPn2Z/" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+//                       <FontAwesomeIcon icon={faFacebookF} className="text-blue-600 text-sm" />
+//                     </a>
+//                     <a href="https://www.instagram.com/zerviatechsolutions/" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+//                       <FontAwesomeIcon icon={faInstagram} className="text-pink-500 text-sm" />
+//                     </a>
+//                     <a href="https://www.linkedin.com/company/zervia-tech-solutions/" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+//                       <FontAwesomeIcon icon={faLinkedinIn} className="text-blue-700 text-sm" />
+//                     </a>
+//                     <a href="https://x.com/Zerviaacademy" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+//                       <FontAwesomeIcon icon={faTwitter} className="text-sky-500 text-sm" />
+//                     </a>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* FAQ Section */}
+//             <div className="mt-12 lg:mt-16">
+//               <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">FAQ</h2>
+//               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {[
+//                   { question: "Do you build both web and mobile apps?", answer: "Yes. We design and develop scalable web platforms and mobile applications tailored to your business needs." },
+//                   { question: "Will my idea be kept confidential?", answer: "100%. Your data and ideas are secure with us." },
+//                   { question: "Do you work with clients outside India?", answer: "Yes, we collaborate globally." },
+//                 ].map((item, index) => (
+//                   <div key={index} onMouseEnter={(e) => handleHover(e.currentTarget)} onMouseLeave={(e) => handleLeave(e.currentTarget)} className="faq-card group bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300">
+//                     <div className="w-10 h-1 bg-[#632e87] rounded mb-4"></div>
+//                     <p className="font-semibold text-gray-800 text-2xl">{item.question}</p>
+//                     <p className="text-gray-500 mt-3 text-xl">{item.answer}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// } 
+
+
+
 "use client";
 
-import { useState } from "react";
-// Import the service we discussed (adjust the path based on where you saved apiServices.js)
-// import { sendContactMessage } from "@/services/apiServices";
+import { useState, useEffect } from "react";
 import { sendContactMessage } from "../apiServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,40 +978,122 @@ import {
   faLinkedinIn,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { FiPhone, FiMail } from "react-icons/fi";
 
 export default function ContactPage() {
-  // 1. State management for loading and status messages
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  // 2. Handle Form Submission
+  // ✅ ENTRY ANIMATIONS (On Page Load)
+  useEffect(() => {
+    const runAnimation = async () => {
+      const animeModule = await import("animejs");
+      const anime = animeModule.animate || animeModule.default || animeModule;
 
-  //   const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
+      anime({
+        targets: ".hero-title",
+        translateY: [40, 0],
+        opacity: [0, 1],
+        duration: 900,
+        easing: "easeOutExpo",
+      });
 
-  //   const formData = new FormData(e.currentTarget);
-  //   const data = Object.fromEntries(formData);
+      anime({
+        targets: ".hero-subtitle",
+        translateY: [30, 0],
+        opacity: [0, 1],
+        delay: 200,
+        duration: 900,
+        easing: "easeOutExpo",
+      });
 
-  //   try {
-  //     const result = await sendContactMessage(data);
+      anime({
+        targets: ".form-fields input, .form-fields textarea, .form-fields button",
+        translateY: [20, 0],
+        opacity: [0, 1],
+        delay: anime.stagger ? anime.stagger(100) : 100,
+        duration: 700,
+        easing: "easeOutQuad",
+      });
 
-  //     if (result.success) {
-  //       alert("✅ Message sent successfully!🚀🚀");
-  //       e.currentTarget.reset();
-  //     }
-  //   } catch (error) {
-  //     alert("❌ Failed to send message: " + error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+      anime({
+        targets: ".faq-card",
+        translateY: [20, 0],
+        opacity: [0, 1],
+        delay: anime.stagger ? anime.stagger(120) : 120,
+        duration: 700,
+        easing: "easeOutQuad",
+      });
+    };
+
+    runAnimation();
+  }, []);
+
+  // ✅ SUCCESS FLIGHT ANIMATION (Arc Path Around Box)
+  useEffect(() => {
+    if (showSuccess) {
+      const runSuccessAnim = async () => {
+        const animeModule = await import("animejs");
+        const anime = animeModule.animate || animeModule.default || animeModule;
+
+        // Reset plane properties before animation
+        anime.set(".success-plane", {
+          translateX: "-50%", 
+          translateY: "-50%",
+          left: "0%", 
+          top: "100%", // Start Bottom-Left of the message container
+          rotate: "-45deg",
+          opacity: 0
+        });
+
+        // Arc Path Flight around the box to land at Top-Center
+        anime({
+          targets: ".success-plane",
+          left: ["0%", "50%"], // Center horizontally
+          top: ["100%", "0%"], // Center vertically (Top of box)
+          translateX: ["-50%", "-50%"], // Keep center origin
+          translateY: ["-50%", "-140%"], // Land nicely above the box
+          rotate: ["-45deg", "0deg"], // Straighten as it lands
+          opacity: {
+            value: [0, 1],
+            duration: 800,
+            easing: 'easeOutQuad'
+          },
+          duration: 2000,
+          easing: "easeOutElastic(1, .6)", // Bouncy landing
+        });
+
+        // Success message text fade-in
+        anime({
+          targets: ".success-content-box",
+          scale: [0.9, 1],
+          opacity: [0, 1],
+          delay: 200, // Show box first
+          duration: 800,
+          easing: "easeOutQuad",
+        });
+      };
+      runSuccessAnim();
+    }
+  }, [showSuccess]);
+
+  const handleHover = async (el) => {
+    const animeModule = await import("animejs");
+    const anime = animeModule.animate || animeModule.default || animeModule;
+    anime({ targets: el, scale: 1.04, duration: 200, easing: "easeOutQuad" });
+  };
+
+  const handleLeave = async (el) => {
+    const animeModule = await import("animejs");
+    const anime = animeModule.animate || animeModule.default || animeModule;
+    anime({ targets: el, scale: 1, duration: 200, easing: "easeOutQuad" });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget; // ✅ store reference first
-
+    const form = e.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
@@ -52,8 +1101,10 @@ export default function ContactPage() {
       const result = await sendContactMessage(data);
 
       if (result.success) {
-        alert("✅ Message sent successfully!🚀");
-        form.reset(); // ✅ use stored reference
+        setShowSuccess(true);
+        form.reset();
+        // Overlay clears automatically after 5 seconds
+        setTimeout(() => setShowSuccess(false), 5000);
       }
     } catch (error) {
       alert("❌ Failed to send message: " + error.message);
@@ -63,190 +1114,143 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-[#f7f8fc] min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-6 md:py-10">
-      <div className="max-w-7xl mx-auto">
-        {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-          <div className="text-center md:text-left">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-              Let’s turn ideas into{" "}
-              <span className="text-green-500">reality.</span>
-            </h1>
-
-            <p className="text-gray-500 mt-4 max-w-md mx-auto md:mx-0 text-sm sm:text-base lg:text-lg">
-              Every big product starts with a simple conversation. Tell us what
-              you’re thinking — we’ll shape it, build it, and bring it to life.
-            </p>
-
-            <div className="mt-6 space-y-2 text-xs sm:text-sm lg:text-base">
-              <p>📞 +91 9486305577</p>
-              <p>contactus@zerviatech.com</p>
-            </div>
-          </div>
-
-          {/* Right Image Card */}
-          <div className="relative pt-8">
-            <div className="bg-gray-800 rounded-2xl h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[340px] flex items-center justify-center shadow-lg ">
-              <p className="text-white opacity-50 text-sm">Image Placeholder</p>
-            </div>
-
-            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span className="text-xs sm:text-sm font-medium">99%</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Middle Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mt-10 lg:mt-14">
-          {/* LEFT - FORM */}
-          <div className="lg:col-span-2 bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-md">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-6 text-[#1e2a5a]">
-              Send us a message
-            </h2>
-
-            {/* Added onSubmit handler here */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  name="name" // Added name attribute
-                  type="text"
-                  placeholder="Your Name"
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
-                />
-                <input
-                  name="email" // Added name attribute
-                  type="email"
-                  placeholder="Email Address"
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
-                />
-              </div>
-
-              <input
-                name="phone" // Added name attribute
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
-              />
-
-              <textarea
-                name="message" // Added name attribute
-                rows={5}
-                placeholder="Your Message"
-                required
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
-              />
-
-              <button
-                type="submit"
-                disabled={loading} // Disable button while loading
-                className="w-full bg-[#1e2a5a] text-white py-3 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#16204a] transition duration-300 disabled:opacity-50"
-              >
-                {loading ? "Sending..." : "Send Message"}
-              </button>
-            </form>
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="flex flex-col gap-5">
-            <div className="bg-[#1e2a5a] text-white p-5 sm:p-6 rounded-2xl shadow-md">
-              <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-3">
-                Location
-              </h3>
-              <p className="text-sm sm:text-base opacity-80 leading-relaxed">
-                773A/1, (Upstair)
-                <br />
-                8th Street, Indira Nagar 1st Cross
-                <br />
-                K.T.C. Nagar, Tirunelveli - 627 011
-                <br/>
-                Tamil Nadu - 627011
-              </p>
-
+    <div className="relative overflow-hidden min-h-screen">
+      {/* ✅ SUCCESS OVERLAY */}
+      {showSuccess && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/20 backdrop-blur-xl overflow-hidden p-4">
           
-            </div>
-
-            <div className="rounded-2xl overflow-hidden shadow-md h-40 sm:h-48 lg:h-56">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.918456429589!2d77.7471243!3d8.7112028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNDInNDAuMyJOIDc3wrA0NCc0OS43IkU!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin"
-                className="w-full h-full border-0"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="bg-[#eaeaf5] p-5 sm:p-6 rounded-2xl">
-              <p className="text-sm sm:text-base mb-3 text-gray-600">
-                Social Networks
+          {/* Container to handle the plane's relative arc path */}
+          <div className="relative success-content-box opacity-0 max-w-md w-full">
+            
+            {/* The Flying Plane (Positioned absolutely relative to the box) */}
+            <img
+              src="/email.png"
+              className="success-plane absolute w-20 h-20 pointer-events-none z-10 opacity-0 transform -translate-x-1/2 -translate-y-1/2"
+              alt="Paper Plane"
+              style={{ left: '0%', top: '100%' }} // Initial CSS state
+            />
+            
+            {/* The Message Box */}
+            <div className="text-center p-8 bg-white/90 rounded-3xl shadow-2xl border border-purple-100 mt-20 relative">
+              <h2 className="text-4xl font-bold text-[#632e87] mb-4">Hurrah!</h2>
+              <p className="text-xl text-gray-700 font-medium leading-relaxed">
+                Your message just landed successfully!<br />
+                <span className="text-[#632e87]">We’ll contact you soon.</span>
               </p>
-
-              <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-blue-100 transition"
-                >
-                  <FontAwesomeIcon
-                    icon={faFacebookF}
-                    className="text-blue-600 text-sm"
-                  />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition"
-                >
-                  <FontAwesomeIcon
-                    icon={faInstagram}
-                    className="text-pink-500 text-sm"
-                  />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-blue-200 transition"
-                >
-                  <FontAwesomeIcon
-                    icon={faLinkedinIn}
-                    className="text-blue-700 text-sm"
-                  />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-sky-100 transition"
-                >
-                  <FontAwesomeIcon
-                    icon={faTwitter}
-                    className="text-sky-500 text-sm"
-                  />
-                </a>
-              </div>
+              <button 
+                onClick={() => setShowSuccess(false)}
+                className="mt-8 px-10 py-3 bg-[#632e87] text-white rounded-full font-bold shadow-lg hover:bg-[#4d2369] transition-all"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
+      )}
 
-        {/* FAQ Section */}
-        <div className="mt-12 lg:mt-16">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
-            <h2 className="text-base sm:text-lg lg:text-xl font-semibold">
-              Frequently asked queries
-            </h2>
-          </div>
+      {/* ✅ MAIN CONTENT WRAPPER */}
+      <div className={`transition-all duration-700 ${showSuccess ? "blur-md scale-95 opacity-40 pointer-events-none" : "blur-0 scale-100 opacity-100"}`}>
+        <div className="bg-[] min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-6 md:py-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Top Section */}
+            <div className="flex justify-center items-center min-h-[60vh] px-4">
+              <div className="text-center max-w-2xl">
+                <h1 className="hero-title flex flex-wrap justify-center items-baseline gap-x-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-center">
+                  <span>Let’s turn ideas into</span>
+                  <span className="relative inline-flex items-baseline">
+                    <div id="flip" className="overflow-hidden leading-tight h-[1em]">
+                      <div className="text-[#632e87] animate-flip">
+                        <div className="h-[1em] flex items-center justify-center">Digital Excellence!</div>
+                        <div className="h-[1em] flex items-center justify-center">Innovation!</div>
+                        <div className="h-[1em] flex items-center justify-center">Solutions!</div>
+                        <div className="h-[1em] flex items-center justify-center">Reality!</div>
+                      </div>
+                    </div>
+                  </span>
+                </h1>
+                <p className="hero-subtitle text-gray-500 mt-4 text-sm sm:text-base lg:text-xl">
+                  Every big product starts with a simple conversation. Tell us what you’re thinking — we’ll shape it, build it, and bring it to life.
+                </p>
+                <div className="mt-6 space-y-3 text-xs sm:text-sm lg:text-lg flex flex-col items-center">
+                  <div className="flex items-center gap-2">
+                    <FiPhone className="text-[#632e87] text-xl" />
+                    <span className="text-xl">+91 9486305577</span>
+                    <FiMail className="text-[#632e87] text-xl" />
+                    <span className="text-xl">contactus@zerviatech.com</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {["Response Time?", "Pricing Models?", "Project Onboarding?"].map(
-              (item, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-4 sm:p-5 lg:p-6 rounded-xl shadow hover:shadow-md transition"
-                >
-                  <p className="font-medium text-sm sm:text-base lg:text-lg">
-                    {item}
-                  </p>
-                  <p className="text-xs sm:text-sm lg:text-base text-gray-500 mt-2">
-                    We usually respond within 24 hours with details.
+            {/* Middle Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mt-10 lg:mt-14">
+              {/* LEFT - FORM */}
+              <div className="lg:col-span-2 bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-md">
+                <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">Get In Touch</h2>
+                <form onSubmit={handleSubmit} className="space-y-4 form-fields">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input name="name" type="text" placeholder="Your Name" required className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+                    <input name="email" type="email" placeholder="Email Address" required className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+                  </div>
+                  <input name="phone" type="tel" placeholder="Phone Number" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+                  <textarea name="message" rows={5} placeholder="Your Message" required className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]" />
+                  <button type="submit" disabled={loading} className="w-full bg-[#632e87] text-white py-3 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-white hover:text-[#632e87] border-2 border-transparent hover:border-[#632e87] transition duration-300 disabled:opacity-50">
+                    {loading ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              </div>
+
+              {/* RIGHT SIDE */}
+              <div className="flex flex-col gap-5">
+                <div className="bg-[#632e87] text-white p-5 sm:p-6 rounded-2xl shadow-md">
+                  <h3 className="text-base sm:text-lg lg:text-2xl font-medium mb-3">Location</h3>
+                  <p className="text-sm sm:text-base opacity-80 leading-relaxed">
+                    773A/1, (Upstair)<br />
+                    8th Street, Indira Nagar 1st Cross<br />
+                    K.T.C. Nagar, Tirunelveli - 627 011<br />
+                    Tamil Nadu - 627011
                   </p>
                 </div>
-              ),
-            )}
+                <div className="rounded-2xl overflow-hidden shadow-md h-40 sm:h-48 lg:h-56">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.7548308071514!2d77.77269657477666!3d8.714815791334537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b040dcdff14a163%3A0x35457e93fbc519f4!2sZervia%20Tech%20Solutions!5e0!3m2!1sen!2sin!4v1776402249847!5m2!1sen!2sin" className="w-full h-full border-0" loading="lazy" />
+                </div>
+                <div className="bg-[#632e87] p-5 sm:p-6 rounded-2xl">
+                  <p className="text-base sm:text-lg lg:text-2xl mb-3 text-white font-medium">Social Networks</p>
+                  <div className="flex gap-4">
+                    <a href="https://www.facebook.com/share/1A9agKPn2Z/" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+                      <FontAwesomeIcon icon={faFacebookF} className="text-blue-600 text-sm" />
+                    </a>
+                    <a href="https://www.instagram.com/zerviatechsolutions/" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+                      <FontAwesomeIcon icon={faInstagram} className="text-pink-500 text-sm" />
+                    </a>
+                    <a href="https://www.linkedin.com/company/zervia-tech-solutions/" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+                      <FontAwesomeIcon icon={faLinkedinIn} className="text-blue-700 text-sm" />
+                    </a>
+                    <a href="https://x.com/Zerviaacademy" className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow hover:scale-105 hover:bg-pink-100 transition">
+                      <FontAwesomeIcon icon={faTwitter} className="text-sky-500 text-sm" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ Section */}
+            <div className="mt-12 lg:mt-16">
+              <h2 className="text-lg sm:text-xl lg:text-4xl font-bold mb-6 text-[#632e87]">FAQ</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { question: "Do you build both web and mobile apps?", answer: "Yes. We design and develop scalable web platforms and mobile applications tailored to your business needs." },
+                  { question: "Will my idea be kept confidential?", answer: "100%. Your data and ideas are secure with us." },
+                  { question: "Do you work with clients outside India?", answer: "Yes, we collaborate globally." },
+                ].map((item, index) => (
+                  <div key={index} onMouseEnter={(e) => handleHover(e.currentTarget)} onMouseLeave={(e) => handleLeave(e.currentTarget)} className="faq-card group bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300">
+                    <div className="w-10 h-1 bg-[#632e87] rounded mb-4"></div>
+                    <p className="font-semibold text-gray-800 text-2xl">{item.question}</p>
+                    <p className="text-gray-500 mt-3 text-xl">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
