@@ -5,32 +5,32 @@ import Image from "next/image";
 const services = [
   {
     title: "UI/UX & Product Design",
-    desc: "Editorial-grade interfaces that prioritize user flow and brand identity.",
+    desc: "We design simple, clear digital experiences that help people navigate effortlessly, engage confidently, and achieve their goals through intuitive, user-friendly, and visually appealing solutions.",
     icon: "/uiux.png",
   },
   {
     title: "Web & Digital Platform Development",
-    desc: "High-performance React and Next.js applications optimized for speed.",
+    desc: "We build reliable websites and platforms that support your daily business work, improve efficiency, enhance productivity, streamline operations, strengthen online presence, and drive consistent growth.",
     icon: "/webdevelopment.png",
   },
   {
     title: "Mobile Application Development",
-    desc: "Bespoke ERP and CRM systems designed for complex operational needs.",
+    desc: "We create mobile apps that help you reach customers, improve engagement, streamline operations, enhance user experience, boost productivity, and grow your business with smart digital solutions.",
     icon: "/Mobile.svg",
   },
   {
     title: "Cloud & Infrastructure Solutions",
-    desc: "Native-feel mobile experiences for iOS and Android deployments.",
+    desc: "We manage secure cloud systems so your business runs without worry, ensuring data protection, reliable performance, seamless access, strong security, and uninterrupted operations every day.",
     icon: "/Cloud.svg",
   },
   {
     title: "Data & Analytics Solutions",
-    desc: "Data-driven growth strategies that convert traffic into loyal users.",
+    desc: "We manage secure cloud systems so your business runs without worry, ensuring data protection, reliable performance, seamless access, strong security, and uninterrupted operations every day.",
     icon: "/Data & Analytics.svg",
   },
   {
     title: "Digital Marketing & Growth",
-    desc: "Insightful dashboards that turn raw data into strategic decisions.",
+    desc: "We manage secure cloud systems so your business runs without worry, ensuring data protection, reliable performance, seamless access, strong security, and uninterrupted operations every day.",
     icon: "/Digital mar.svg",
   },
 ];

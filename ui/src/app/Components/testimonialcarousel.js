@@ -6,65 +6,50 @@ import { useState } from "react";
 
 const testimonials = [
   {
-    name: "Arun Kumar",
-    company: "CEO, TechCorp",
+    name: "Mr.Renganathan",
+    company: "Menthe Technologies",
     review:
-      "Exceptional service and high-quality solutions. Our business scaled faster than expected.",
+      "Their team delivered exceptional digital marketing support, improved our online visibility, generated quality leads, strengthened brand credibility, and helped our business achieve steady growth with measurable, consistent results.",
   },
   {
-    name: "Priya Sharma",
-    company: "Founder, StartupX",
+    name: "Mr.Shankar",
+    company: "Sharingbooth",
     review:
-      "Professional team with deep technical expertise. Highly recommended.",
+      "Zervia Tech Solutions developed our app with creativity and clarity, delivering smooth performance, intuitive design, timely completion, and a truly professional digital experience. Highly recommended.",
   },
   {
-    name: "Rahul Das",
-    company: "Manager, FinEdge",
+    name: "Dr. Venkatesh ",
+    company: "Sridevi Dental Care ",
     review:
-      "Reliable and scalable solutions. They truly understand business needs.",
+      "Their digital strategies transformed our clinic’s online presence, increased patient trust, improved engagement, and brought consistent appointment inquiries with measurable growth.",
   },
   {
-    name: "Sanjay Patel",
-    company: "Director, BuildPro",
+    name: "Dr. Kavya",
+    company: "Indianbliss Giftzz",
     review:
-      "Top-notch development and support. Great experience overall.",
+      "Creative digital marketing strategies transformed our return-gift brand, increasing visibility, strengthening customer engagement, driving consistent orders, and delivering professional, dependable results. Highly recommended.",
   },
   {
-    name: "Meena Iyer",
-    company: "COO, SoftLink",
+    name: "Mr. Balaji ",
+    company: "J Mahal",
     review:
-      "Their UI/UX and performance optimization are outstanding.",
+      "They exceeded expectations by delivering seamless digital solutions with creativity, professionalism, timely execution, reliable support, and measurable results that strengthened our brand presence.",
   },
   {
-    name: "Vikram Singh",
-    company: "CTO, Nexa",
+    name: "Mr. Ramalingam",
+    company: "Dhinadharani",
     review:
-      "Highly skilled team delivering enterprise-grade solutions.",
+      "They built our e-newspaper platform seamlessly, ensuring strong performance, smooth accessibility, timely delivery, technical excellence, and complete professionalism throughout the entire development process.",
   },
   {
-    name: "Karthik R",
-    company: "Founder, DevHub",
+    name: "Mr. Ravi",
+    company: "Aalam Photography",
     review:
-      "Smooth process and excellent communication throughout the project.",
+      "Their creative digital approach elevated our photography brand, expanded our audience reach, improved client engagement, generated quality inquiries, and delivered consistent, measurable business growth.",
   },
-  {
-    name: "Anjali Verma",
-    company: "Marketing Head, BrandCo",
-    review:
-      "Helped us improve engagement and conversions significantly.",
-  },
-  {
-    name: "Deepak Nair",
-    company: "Lead, CloudNet",
-    review:
-      "Robust cloud solutions with great scalability and uptime.",
-  },
-  {
-    name: "Sneha Kapoor",
-    company: "HR, TalentPro",
-    review:
-      "Very professional and easy to work with. Delivered on time.",
-  },
+  
+  
+  
 ];
 
 export default function TestimonialCarousel() {

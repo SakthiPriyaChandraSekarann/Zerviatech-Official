@@ -25,10 +25,18 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+<<<<<<< Updated upstream
         <Header />
         {children}
         <Footer />
       </body>
+=======
+        <Header/>
+        {children}
+        <Footer/>
+        </body>
+      
+>>>>>>> Stashed changes
     </html>
   );
 }

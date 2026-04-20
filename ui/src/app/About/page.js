@@ -12,13 +12,32 @@ const AboutPage = () => {
             <span className="text-emerald-500">Digital Future</span> <br />
             with Precision.
           </h1>
+<<<<<<< Updated upstream
 
           <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
+=======
+          <p className="text-gray-600 text-lg leading-relaxed max-w-md">
+>>>>>>> Stashed changes
             At Zervia Tech Solutions, we don't just build software; we engineer
             ecosystems. Founded on the principle of editorial clarity in
             technology, we blend architectural precision with modern innovation.
           </p>
         </div>
+<<<<<<< Updated upstream
+=======
+
+        {/* Main Hero Image */}
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-100 to-blue-50 rounded-2xl blur opacity-30"></div>
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 shadow-xl">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+              alt="Architectural Workspace"
+              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-1000"
+            />
+          </div>
+        </div>
+>>>>>>> Stashed changes
       </section>
 
       {/* Mission & Vision - Light Cards */}
@@ -31,10 +50,17 @@ const AboutPage = () => {
             Our Mission
           </h3>
           <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+<<<<<<< Updated upstream
             To empower businesses globally by delivering high-fidelity digital
             solutions that bridge the gap between complex engineering and
             intuitive human experiences. We strive for excellence in every line
             of code we ship.
+=======
+            Zervia Tech Solutions empowers businesses with tailored tech
+            services, integrating development, applications, and marketing to
+            drive results with innovation, professionalism, and long-term client
+            value.
+>>>>>>> Stashed changes
           </p>
         </div>
 
@@ -44,10 +70,17 @@ const AboutPage = () => {
           </div>
           <h3 className="text-2xl font-bold mb-4 tracking-tight">Our Vision</h3>
           <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+<<<<<<< Updated upstream
             To be the global benchmark for editorial-grade software
             architecture, where design and technology exist in perfect symmetry,
             fostering a world connected by seamless and beautiful digital
             infrastructure.
+=======
+            Zervia Tech Solutions delivers innovative digital solutions, driving
+            sustainable growth and operational excellence, while transforming
+            businesses through technology and client-focused service for
+            long-term success..
+>>>>>>> Stashed changes
           </p>
         </div>
       </section>
@@ -65,10 +98,20 @@ const AboutPage = () => {
             <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <div className="w-1.5 h-1.5 bg-black rounded-full" />
             </div>
+<<<<<<< Updated upstream
             <h4 className="text-lg font-bold mb-4">Uncompromising Quality</h4>
             <p className="text-gray-400 text-sm leading-relaxed">
               Every project undergoes a rigorous architectural audit to ensure
               long-term performance.
+=======
+            <h4 className="text-lg font-bold mb-4">
+              {" "}
+              Excellence in Every Build
+            </h4>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We ensure high-quality, scalable, and reliable digital solutions
+              through expert engineering.
+>>>>>>> Stashed changes
             </p>
           </div>
 
@@ -79,11 +122,19 @@ const AboutPage = () => {
               <div className="w-1.5 h-1.5 bg-white rounded-full" />
             </div>
             <h4 className="text-lg font-bold mb-4 text-emerald-600">
+<<<<<<< Updated upstream
               Strategic Innovation
             </h4>
             <p className="text-gray-600 text-sm leading-relaxed font-medium">
               We don't follow trends, we set them. Our tech stack leverages the
               latest in edge computing and AI.
+=======
+              Client-Centric Collaboration
+            </h4>
+            <p className="text-gray-600 text-sm leading-relaxed font-medium">
+              We work as an extension of your team, ensuring transparency,
+              trust, and shared success.
+>>>>>>> Stashed changes
             </p>
           </div>
 
@@ -92,10 +143,20 @@ const AboutPage = () => {
             <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <div className="w-1.5 h-1.5 bg-black rounded-full opacity-30" />
             </div>
+<<<<<<< Updated upstream
             <h4 className="text-lg font-bold mb-4">Collaborative Ethos</h4>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your vision is our blueprint. We work synchronously with your team
               as a true partner.
+=======
+            <h4 className="text-lg font-bold mb-4">
+              {" "}
+              Forward-Thinking Innovation
+            </h4>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Leveraging modern technologies, we craft solutions that keep you
+              ahead of the competition.
+>>>>>>> Stashed changes
             </p>
           </div>
         </div>
@@ -105,6 +166,7 @@ const AboutPage = () => {
       <section className="px-8 py-24 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
         <div className="order-2 lg:order-1">
           <h2 className="text-5xl font-extrabold mb-8 leading-tight tracking-tighter">
+<<<<<<< Updated upstream
             Our Culture of <br />
             Excellence
           </h2>
@@ -119,6 +181,22 @@ const AboutPage = () => {
               { val: "120+", lab: "Dev Experts" },
               { val: "15+", lab: "Awards" },
               { val: "500+", lab: "Shipped" },
+=======
+            Driven by
+            <br /> Excellence
+          </h2>
+          <p className="text-gray-600 mb-12 text-lg leading-relaxed max-w-lg">
+            Behind every line of code is a team committed to precision,
+            innovation, and performance. At Zervia, we craft digital experiences
+            that are built to last and designed to lead.
+          </p>
+          <div className="grid grid-cols-2 gap-y-12 gap-x-8">
+            {[
+              { val: "15+", lab: "Years Industry Experience" },
+              { val: "20+", lab: "Project Deliveries" },
+              { val: "20+", lab: "Team Strength" },
+              { val: "97%", lab: "Client Retention Rate" },
+>>>>>>> Stashed changes
             ].map((stat, idx) => (
               <div key={idx} className="border-l-2 border-emerald-500 pl-6">
                 <div className="text-4xl font-black text-black mb-1">
