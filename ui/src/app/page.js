@@ -14,7 +14,7 @@ export default function Home() {
       <LogoCarousel />
       <Abouthome />
       <Services />
-      <Products />
+      {/* <Products /> */}
       <TestimonialCarousel />
     </div>
   );

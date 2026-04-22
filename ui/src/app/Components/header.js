@@ -2,398 +2,365 @@
 // import React, { useState } from "react";
 // import Image from "next/image";
 // import Link from "next/link";
+// import { usePathname } from "next/navigation";
 
 // const Header = () => {
 //   const [isOpen, setIsOpen] = useState(false);
+//   const [serviceOpen, setServiceOpen] = useState(false);
+//   const pathname = usePathname();
 
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
+//   // Desktop link style
+//   const getLinkStyle = (path) => {
+//     const isActive = pathname === path;
+//     return `font-medium text-lg transition-colors duration-200 ${
+//       isActive ? "text-[#632e87]" : "text-black hover:text-[#632e87]"
+//     }`;
+//   };
+
+//   // Mobile link style
+//   const getMobileLinkStyle = (path) => {
+//     const isActive = pathname === path;
+//     return `block py-2 ${
+//       isActive
+//         ? "text-[#632e87] font-bold"
+//         : "text-gray-600 hover:text-[#632e87]"
+//     }`;
 //   };
 
 //   return (
 //     <nav className="w-full bg-white px-6 py-4 border-b border-gray-100 sticky top-0 z-50">
 //       <div className="max-w-7xl mx-auto flex items-center justify-between">
-//         <div className="flex-shrink-0">
-//           <Link href="/" className="block">
-//             <Image
-//               src="/logonew.png" // place your logo in public/logo.png
-//               alt="Zervia Tech"
-//               width={140}
-//               height={40}
-//               className="w-[100px] sm:w-[120px] md:w-[140px] lg:w-[160px] h-auto object-contain"
-//               priority
-//             />
-//           </Link>
-//         </div>
-//         {/* Desktop Navigation Links */}
+        
+//         {/* Logo */}
+//         <Link href="/" onClick={() => setIsOpen(false)}>
+//           <Image src="/logonew.png" alt="logo" width={160} height={40} />
+//         </Link>
+
+//         {/* Desktop Menu */}
 //         <div className="hidden md:flex items-center space-x-8">
-//           <Link
-//             href="/"
-//             className="text-[#34A853] font-medium border-b-2 border-[#34A853] pb-1"
-//           >
+//           <Link href="/" className={getLinkStyle("/")}>
 //             Home
 //           </Link>
-//           <Link
-//             href="/About"
-//             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-//           >
+
+//           <Link href="/About" className={getLinkStyle("/About")}>
 //             About Us
 //           </Link>
-//           <Link
-//             href="/service"
-//             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-//           >
-//             Services
-//           </Link>
-//           {/* <Link
-//             href="/product"
-//             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-//           >
-//             Product
-//           </Link> */}
-//           <Link
-//             href="/Academy"
-//             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-//           >
+
+//           {/* Services Dropdown */}
+//           <div className="relative group">
+//             <button
+//               className={`flex items-center gap-1 font-medium text-lg ${
+//                 pathname.startsWith("/service")
+//                   ? "text-[#632e87]"
+//                   : "text-black hover:text-[#632e87]"
+//               }`}
+//             >
+//               Services
+//             </button>
+
+//             <div className="absolute left-0 mt-2 w-56 bg-white shadow-lg rounded-lg border border-gray-50 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+//               <Link href="/service/webdigital" className="block px-4 py-2 hover:bg-gray-50 hover:text-[#632e87]">
+//                 Web Development
+//               </Link>
+//               <Link href="/service/mobileapplicaion" className="block px-4 py-2 hover:bg-gray-50 hover:text-[#632e87]">
+//                 App Development
+//               </Link>
+//               <Link href="/service/uiux" className="block px-4 py-2 hover:bg-gray-50 hover:text-[#632e87]">
+//                 UI/UX Design
+//               </Link>
+//               <Link href="/service/cloudinfra" className="block px-4 py-2 hover:bg-gray-50 hover:text-[#632e87]">
+//                 Cloud & Infrastructure
+//               </Link>
+//               <Link href="/service/digitalmarketing" className="block px-4 py-2 hover:bg-gray-50 hover:text-[#632e87]">
+//                 Digital Marketing
+//               </Link>
+//               <Link href="/service/dataanalytics" className="block px-4 py-2 hover:bg-gray-50 hover:text-[#632e87]">
+//                 Data & Analytics
+//               </Link>
+//             </div>
+//           </div>
+
+//           <Link href="/Academy" className={getLinkStyle("/Academy")}>
 //             Academy
 //           </Link>
-//           <Link
-//             href="/Contact"
-//             className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-//           >
+
+
+//           <Link href="/Contact" className={getLinkStyle("/Contact")}>
 //             Contact Us
 //           </Link>
 //         </div>
-//         {/* Desktop Call to Action Button */}
-//         <div className="hidden md:block">
-//           <Link
-//             href="/get-started"
-//             className="bg-[#2D3663] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#1e2545] transition-all shadow-sm"
-//           >
-//             Get Started
-//           </Link>
-//         </div>
-//         {/* Mobile Menu Button */}
-//         <div className="md:hidden flex items-center">
-//           <button
-//             onClick={toggleMenu}
-//             className="text-[#2D3663] focus:outline-none"
-//             aria-label="Toggle menu"
-//           >
-//             {isOpen ? (
-//               <svg
-//                 className="w-8 h-8"
-//                 fill="none"
-//                 stroke="currentColor"
-//                 viewBox="0 0 24 24"
-//               >
-//                 <path
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   d="M6 18L18 6M6 6l12 12"
-//                 />
-//               </svg>
-//             ) : (
-//               <svg
-//                 className="w-8 h-8"
-//                 fill="none"
-//                 stroke="currentColor"
-//                 viewBox="0 0 24 24"
-//               >
-//                 <path
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   d="M4 6h16M4 12h16M4 18h16"
-//                 />
-//               </svg>
-//             )}
-//           </button>
-//         </div>
+
+//         {/* Mobile Toggle */}
+//         <button
+//           onClick={() => setIsOpen(!isOpen)}
+//           className="md:hidden text-2xl text-gray-600"
+//         >
+//           {isOpen ? "✕" : "☰"}
+//         </button>
 //       </div>
 
-//       {/* Mobile Dropdown Menu */}
-//       <div
-//         className={`${isOpen ? "block" : "hidden"} md:hidden bg-white mt-4 pb-4 space-y-4`}
-//       >
-//         <Link
-//           href="/"
-//           className="block text-[#34A853] font-medium"
-//           onClick={() => setIsOpen(false)}
-//         >
-//           Home
-//         </Link>
-//         <Link
-//           href="/About"
-//           className="block text-gray-500 font-medium"
-//           onClick={() => setIsOpen(false)}
-//         >
-//           About Us
-//         </Link>
-//         <Link
-//           href="/services"
-//           className="block text-gray-500 font-medium"
-//           onClick={() => setIsOpen(false)}
-//         >
-//           Services
-//         </Link>
-//         <Link
-//           href="/product"
-//           className="block text-gray-500 font-medium"
-//           onClick={() => setIsOpen(false)}
-//         >
-//           Product
-//         </Link>
-//         <Link
-//           href="/Academy"
-//           className="block text-gray-500 font-medium"
-//           onClick={() => setIsOpen(false)}
-//         >
-//           Academy
-//         </Link>
-//         <Link
-//           href="/Contact"
-//           className="block text-gray-500 font-medium"
-//           onClick={() => setIsOpen(false)}
-//         >
-//           Contact Us
-//         </Link>
-//         <div className="pt-2">
-//           <Link
-//             href="/get-started"
-//             className="block text-center bg-[#2D3663] text-white px-6 py-2.5 rounded-lg font-semibold"
-//             onClick={() => setIsOpen(false)}
-//           >
-//             Get Started
+//       {/* Mobile Menu */}
+//       {isOpen && (
+//         <div className="md:hidden mt-4 pb-4 space-y-2 border-t border-gray-50 pt-4">
+          
+//           <Link href="/" className={getMobileLinkStyle("/")} onClick={() => setIsOpen(false)}>
+//             Home
+//           </Link>
+
+//           <Link href="/About" className={getMobileLinkStyle("/About")} onClick={() => setIsOpen(false)}>
+//             About
+//           </Link>
+
+//           {/* Mobile Services Dropdown */}
+//           <div>
+//             <button
+//               onClick={() => setServiceOpen(!serviceOpen)}
+//               className={`w-full text-left py-2 flex justify-between items-center transition ${
+//                 pathname.startsWith("/service")
+//                   ? "text-[#632e87]"
+//                   : "text-gray-600"
+//               }`}
+//             >
+//               Services
+//               <span
+//                 className={`transition-transform duration-300 ${
+//                   serviceOpen ? "rotate-180" : ""
+//                 }`}
+//               >
+//                 ▼
+//               </span>
+//             </button>
+
+//             {/* Animated Dropdown */}
+//             <div
+//               className={`ml-4 overflow-hidden transition-all duration-300 ${
+//                 serviceOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+//               }`}
+//             >
+//               <div className="space-y-2 border-l-2 border-gray-100 pl-4">
+                
+//                 <Link href="/service/webdigital" className={getMobileLinkStyle("/service/webdigital")} onClick={() => { setIsOpen(false); setServiceOpen(false); }}>
+//                   Web Development
+//                 </Link>
+
+//                 <Link href="/service/mobileapplicaion" className={getMobileLinkStyle("/service/mobileapplicaion")} onClick={() => { setIsOpen(false); setServiceOpen(false); }}>
+//                   App Development
+//                 </Link>
+
+//                 <Link href="/service/uiux" className={getMobileLinkStyle("/service/uiux")} onClick={() => { setIsOpen(false); setServiceOpen(false); }}>
+//                   UI/UX Design
+//                 </Link>
+
+//                 <Link href="/service/cloudinfra" className={getMobileLinkStyle("/service/cloudinfra")} onClick={() => { setIsOpen(false); setServiceOpen(false); }}>
+//                   Cloud & Infra
+//                 </Link>
+
+//                 <Link href="/service/digitalmarketing" className={getMobileLinkStyle("/service/digitalmarketing")} onClick={() => { setIsOpen(false); setServiceOpen(false); }}>
+//                   Digital Marketing
+//                 </Link>
+
+//                 <Link href="/service/dataanalytics" className={getMobileLinkStyle("/service/dataanalytics")} onClick={() => { setIsOpen(false); setServiceOpen(false); }}>
+//                   Data Analytics
+//                 </Link>
+
+//               </div>
+//             </div>
+//           </div>
+
+//           <Link href="/Academy" className={getMobileLinkStyle("/Academy")} onClick={() => setIsOpen(false)}>
+//             Academy
+//           </Link>
+
+
+//           <Link href="/Contact" className={getMobileLinkStyle("/Contact")} onClick={() => setIsOpen(false)}>
+//             Contact
 //           </Link>
 //         </div>
-//       </div>
+//       )}
 //     </nav>
 //   );
 // };
 
 // export default Header;
+
+
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Hook to detect current route
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
+  const pathname = usePathname();
+
+  const getLinkStyle = (path) => {
+    const isActive = pathname === path;
+    return `font-medium text-lg transition-colors duration-200 ${
+      isActive ? "text-[#632e87]" : "text-black hover:text-[#632e87]"
+    }`;
+  };
+
+  const getMobileLinkStyle = (path) => {
+    const isActive = pathname === path;
+    return `block py-2 ${
+      isActive
+        ? "text-[#632e87] font-bold"
+        : "text-gray-600 hover:text-[#632e87]"
+    }`;
+  };
 
   return (
-    <nav className="w-full bg-white px-6 py-4 border-b border-gray-100 sticky top-0 z-50">
+    <nav className="w-full bg-white px-4 sm:px-6 py-4 border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-
+        
         {/* Logo */}
-        <Link href="/" className="block">
+        <Link href="/" onClick={() => setIsOpen(false)}>
           <Image
             src="/logonew.png"
-            alt="Zervia Tech"
-            width={140}
+            alt="logo"
+            width={160}
             height={40}
-            className="w-[100px] sm:w-[120px] md:w-[140px] lg:w-[160px] h-auto object-contain"
-            priority
+            className="w-[120px] sm:w-[140px] lg:w-[160px]"
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-
-          <Link
-            href="/"
-            className="text-[#34A853] font-medium border-b-2 border-[#34A853] pb-1"
-          >
+        {/* DESKTOP MENU */}
+        <div className="hidden lg:flex items-center space-x-8">
+          
+          <Link href="/" className={getLinkStyle("/")}>
             Home
           </Link>
 
-          <Link
-            href="/About"
-            className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-          >
+          <Link href="/About" className={getLinkStyle("/About")}>
             About Us
           </Link>
 
-          {/* ✅ Services Dropdown */}
-          <div className="relative group">
-            <button className="text-gray-500 hover:text-[#2D3663] font-medium">
+          {/* Services Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setServiceOpen(true)}
+            onMouseLeave={() => setServiceOpen(false)}
+          >
+            <button
+              className={`flex items-center gap-1 font-medium text-lg ${
+                pathname.startsWith("/service")
+                  ? "text-[#632e87]"
+                  : "text-black hover:text-[#632e87]"
+              }`}
+            >
               Services
+              {/* <span>▼</span> */}
             </button>
 
-            <div className="absolute left-0 mt-2 w-52 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-
-              <Link
-                href="/service/uiux"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                UI/UX & Product Design
+            <div
+              className={`absolute left-0 mt-2 w-60 bg-white shadow-lg rounded-lg border border-gray-200 transition-all duration-200 ${
+                serviceOpen
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible -translate-y-2"
+              }`}
+            >
+              <Link href="/service/webdigital" className="block px-4 py-2 hover:bg-gray-50">
+                Web Development
               </Link>
-
-              <Link
-                href="/service/webdigital"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                Web & Digital Platform Development
+              <Link href="/service/mobileapplicaion" className="block px-4 py-2 hover:bg-gray-50">
+                App Development
               </Link>
-
-              <Link
-                href="/service/mobileapplicaion"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                Mobile Application Development
+              <Link href="/service/uiux" className="block px-4 py-2 hover:bg-gray-50">
+                UI/UX Design
               </Link>
-
-              <Link
-                href="/service/cloudinfra"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                Cloud & Infrastructure Solutions
+              <Link href="/service/cloudinfra" className="block px-4 py-2 hover:bg-gray-50">
+                Cloud & Infrastructure
               </Link>
-
-              <Link
-                href="/service/dataanalytics"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                Data & Analytics Solutions
+              <Link href="/service/digitalmarketing" className="block px-4 py-2 hover:bg-gray-50">
+                Digital Marketing
               </Link>
-
-              <Link
-                href="/service/digitalmarketing"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                Digital Marketing & Growth
+              <Link href="/service/dataanalytics" className="block px-4 py-2 hover:bg-gray-50">
+                Data & Analytics
               </Link>
-              
-
             </div>
           </div>
 
-          <Link
-            href="/Academy"
-            className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-          >
+          <Link href="/Academy" className={getLinkStyle("/Academy")}>
             Academy
           </Link>
 
-          <Link
-            href="/Contact"
-            className="text-gray-500 hover:text-[#2D3663] transition-colors font-medium"
-          >
+          <Link href="/Contact" className={getLinkStyle("/Contact")}>
             Contact Us
           </Link>
         </div>
 
-        {/* Desktop Button */}
-        <div className="hidden md:block">
-          <Link
-            href="/get-started"
-            className="bg-[#2D3663] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#1e2545] transition-all shadow-sm"
-          >
-            Get Started
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-[#2D3663]"
-          >
-            {isOpen ? "✕" : "☰"}
-          </button>
-        </div>
+        {/* MOBILE + TABLET HAMBURGER */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="lg:hidden text-2xl text-gray-700"
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
       </div>
 
-      {/* ✅ Mobile Menu */}
+      {/* MOBILE + TABLET MENU */}
       {isOpen && (
-        <div className="md:hidden bg-white mt-4 pb-4 space-y-4 px-2">
-
-          <Link href="/" onClick={() => setIsOpen(false)}>
+        <div className="lg:hidden mt-4 pb-6 space-y-3 border-t pt-4">
+          
+          <Link href="/" className={getMobileLinkStyle("/")} onClick={() => setIsOpen(false)}>
             Home
           </Link>
 
-          <Link href="/About" onClick={() => setIsOpen(false)}>
-            About Us
+          <Link href="/About" className={getMobileLinkStyle("/About")} onClick={() => setIsOpen(false)}>
+            About
           </Link>
 
-          {/* ✅ Mobile Services Dropdown */}
+          {/* Services Accordion */}
           <div>
             <button
               onClick={() => setServiceOpen(!serviceOpen)}
-              className="w-full text-left font-medium"
+              className="w-full text-left py-2 flex justify-between items-center text-gray-600"
             >
               Services
+              <span>{serviceOpen ? "▲" : "▼"}</span>
             </button>
 
             {serviceOpen && (
-              <div className="ml-4 mt-2 space-y-2">
-
-                <Link
-                  href="/service/uiux"
-                  onClick={() => setIsOpen(false)}
-                >
-                  UI/UX & Product Design
+              <div className="ml-4 mt-2 space-y-3 border-l-2 border-gray-200 pl-4">
+                
+                <Link href="/service/webdigital" className="block text-gray-700 hover:text-[#632e87]">
+                  Web Development
                 </Link>
 
-                <Link
-                  href="/service/webdigital"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Web & Digital Platform Development
+                <Link href="/service/mobileapplicaion" className="block text-gray-700 hover:text-[#632e87]">
+                  App Development
                 </Link>
 
-                <Link
-                  href="/service/mobileapplicaion"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Mobile Application Development
+                <Link href="/service/uiux" className="block text-gray-700 hover:text-[#632e87]">
+                  UI/UX Design
                 </Link>
 
-                <Link
-                  href="/service/cloudinfra"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Cloud & Infrastructure Solutions
+                <Link href="/service/cloudinfra" className="block text-gray-700 hover:text-[#632e87]">
+                  Cloud & Infrastructure
                 </Link>
 
-                <Link
-                  href="/service/dataanalytics"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Data & Analytics Solutions
+                <Link href="/service/digitalmarketing" className="block text-gray-700 hover:text-[#632e87]">
+                  Digital Marketing
                 </Link>
 
-                <Link
-                  href="/service/digitalmarketing"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Digital Marketing & Growth
+                <Link href="/service/dataanalytics" className="block text-gray-700 hover:text-[#632e87]">
+                  Data & Analytics
                 </Link>
 
               </div>
             )}
           </div>
 
-          <Link href="/Academy" onClick={() => setIsOpen(false)}>
+          <Link href="/Academy" className={getMobileLinkStyle("/Academy")} onClick={() => setIsOpen(false)}>
             Academy
           </Link>
 
-          <Link href="/Contact" onClick={() => setIsOpen(false)}>
-            Contact Us
+          <Link href="/Contact" className={getMobileLinkStyle("/Contact")} onClick={() => setIsOpen(false)}>
+            Contact
           </Link>
-
-          <div className="pt-2">
-            <Link
-              href="/get-started"
-              className="block text-center bg-[#2D3663] text-white px-6 py-2.5 rounded-lg font-semibold"
-              onClick={() => setIsOpen(false)}
-            >
-              Get Started
-            </Link>
-          </div>
         </div>
       )}
     </nav>

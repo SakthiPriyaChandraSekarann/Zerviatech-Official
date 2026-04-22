@@ -1,269 +1,281 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+/* 🔥 Animation Variants */
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-white text-black selection:bg-emerald-100 font-sans">
+    <div className="min-h-screen bg-white text-black selection:bg-emerald-100 font-sans overflow-x-hidden">
       {/* Hero Section */}
- 
-      <section className="px-4 py-20 max-w-7xl mx-auto min-h-[70vh] flex flex-col items-center justify-center text-center">
-        <div className="space-y-8 flex flex-col items-center">
-          <h1 className="text-6xl md:text-7xl font-extrabold leading-[1.05] tracking-tight text-gray-900">
-            Architecting the <br />
-            <span className="text-emerald-500">Digital Future</span> <br />
-            with Precision.
-          </h1>
-<<<<<<< Updated upstream
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 max-w-7xl mx-auto min-h-[60vh] flex flex-col items-center justify-center text-center">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="space-y-6 sm:space-y-8 flex flex-col items-center"
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight text-gray-900"
+          >
+            Crafting Intelligent <br />
+            <span className="text-[#632e87]">Digital Solutions</span> <br />
+            for Modern Businesses
+          </motion.h1>
 
-          <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
-=======
-          <p className="text-gray-600 text-lg leading-relaxed max-w-md">
->>>>>>> Stashed changes
-            At Zervia Tech Solutions, we don't just build software; we engineer
-            ecosystems. Founded on the principle of editorial clarity in
-            technology, we blend architectural precision with modern innovation.
-          </p>
-        </div>
-<<<<<<< Updated upstream
-=======
-
-        {/* Main Hero Image */}
-        <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-100 to-blue-50 rounded-2xl blur opacity-30"></div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 shadow-xl">
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
-              alt="Architectural Workspace"
-              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-1000"
-            />
-          </div>
-        </div>
->>>>>>> Stashed changes
+          <motion.p
+            variants={fadeUp}
+            className="text-sm sm:text-base md:text-lg leading-relaxed max-w-xl sm:max-w-2xl"
+          >
+            We are a results-driven digital solutions company committed to
+            delivering innovative, scalable, and reliable services tailored to
+            business needs...
+          </motion.p>
+        </motion.div>
       </section>
 
-      {/* Mission & Vision - Light Cards */}
-      <section className="px-8 py-12 max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-        <div className="bg-gray-50 border border-gray-100 p-12 rounded-[2.5rem] hover:bg-white hover:shadow-xl hover:border-emerald-200 transition-all duration-500 group">
-          <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mb-8 transition-colors group-hover:bg-indigo-500">
-            <div className="w-2 h-2 bg-indigo-500 rotate-45 group-hover:bg-white" />
-          </div>
-          <h3 className="text-2xl font-bold mb-4 tracking-tight">
+      {/* Mission & Vision */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-20 items-start">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="md:col-span-7"
+        >
+          {/* <span className="text-[#632e87] font-bold text-xs sm:text-sm tracking-widest uppercase mb-3 block"> */}
+          <span className="text-xl sm:text-2xl font-bold mb-6">
             Our Mission
+          </span>
+
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 mt-4 ">
+            Empowering <br />
+            <span className="text-gray-300">Digital Evolution</span>
           </h3>
-          <p className="text-gray-500 leading-relaxed text-sm md:text-base">
-<<<<<<< Updated upstream
-            To empower businesses globally by delivering high-fidelity digital
-            solutions that bridge the gap between complex engineering and
-            intuitive human experiences. We strive for excellence in every line
-            of code we ship.
-=======
+
+          <p className="text-base sm:text-lg leading-relaxed max-w-xl">
             Zervia Tech Solutions empowers businesses with tailored tech
             services, integrating development, applications, and marketing to
             drive results with innovation, professionalism, and long-term client
             value.
->>>>>>> Stashed changes
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-gray-50 border border-gray-100 p-12 rounded-[2.5rem] hover:bg-white hover:shadow-xl hover:border-emerald-200 transition-all duration-500 group">
-          <div className="w-12 h-12 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center justify-center mb-8 transition-colors group-hover:bg-emerald-500">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 group-hover:bg-white" />
-          </div>
-          <h3 className="text-2xl font-bold mb-4 tracking-tight">Our Vision</h3>
-          <p className="text-gray-500 leading-relaxed text-sm md:text-base">
-<<<<<<< Updated upstream
-            To be the global benchmark for editorial-grade software
-            architecture, where design and technology exist in perfect symmetry,
-            fostering a world connected by seamless and beautiful digital
-            infrastructure.
-=======
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="md:col-span-5 pt-8 md:pt-16 border-t md:border-t-0 md:border-l border-gray-200 md:pl-10"
+        >
+          <h3 className="text-xl sm:text-2xl font-bold mb-4">Our Vision</h3>
+
+          <p className="leading-relaxed text-sm sm:text-base md:text-lg">
             Zervia Tech Solutions delivers innovative digital solutions, driving
             sustainable growth and operational excellence, while transforming
             businesses through technology and client-focused service for
-            long-term success..
->>>>>>> Stashed changes
+            long-term success.
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Why Partners Choose Us - Grid Section */}
-      <section className="px-8 py-24 text-center">
-        <h2 className="text-4xl font-bold mb-6 tracking-tighter">
-          Why Partners Choose Zervia
-        </h2>
-        <div className="w-20 h-1 bg-emerald-500 mx-auto mb-20 rounded-full" />
+      {/* Partnerships */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 max-w-7xl mx-auto">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            variants={fadeUp}
+            className="text-xs sm:text-sm font-bold tracking-widest text-[#632e87] uppercase mb-3 text-center"
+          >
+            Partnerships
+          </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-0 max-w-6xl mx-auto border border-gray-200 rounded-[2rem] overflow-hidden bg-white shadow-sm">
-          {/* Feature 1 */}
-          <div className="p-12 border-b md:border-b-0 md:border-r border-gray-100 hover:bg-gray-50 transition-colors">
-            <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <div className="w-1.5 h-1.5 bg-black rounded-full" />
-            </div>
-<<<<<<< Updated upstream
-            <h4 className="text-lg font-bold mb-4">Uncompromising Quality</h4>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Every project undergoes a rigorous architectural audit to ensure
-              long-term performance.
-=======
-            <h4 className="text-lg font-bold mb-4">
-              {" "}
-              Excellence in Every Build
-            </h4>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              We ensure high-quality, scalable, and reliable digital solutions
-              through expert engineering.
->>>>>>> Stashed changes
-            </p>
-          </div>
+          <motion.h3
+            variants={fadeUp}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 tracking-tight"
+          >
+            Why Zervia?
+          </motion.h3>
 
-          {/* Feature 2 - Highlighted */}
-          <div className="p-12 border-b md:border-b-0 md:border-r border-gray-100 bg-gray-50/50 relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-emerald-500" />
-            <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <div className="w-1.5 h-1.5 bg-white rounded-full" />
-            </div>
-            <h4 className="text-lg font-bold mb-4 text-emerald-600">
-<<<<<<< Updated upstream
-              Strategic Innovation
-            </h4>
-            <p className="text-gray-600 text-sm leading-relaxed font-medium">
-              We don't follow trends, we set them. Our tech stack leverages the
-              latest in edge computing and AI.
-=======
-              Client-Centric Collaboration
-            </h4>
-            <p className="text-gray-600 text-sm leading-relaxed font-medium">
-              We work as an extension of your team, ensuring transparency,
-              trust, and shared success.
->>>>>>> Stashed changes
-            </p>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="md:col-span-7 bg-[#632e87] text-white p-6 sm:p-8 lg:p-12 rounded-3xl flex flex-col justify-start"
+            >
+              <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">
+                Excellence in Every Build
+              </h4>
+              <p className="text-md sm:text-lg text-emerald-100">
+                We ensure high-quality, scalable, and reliable digital solutions through expert engineering.
+              </p>
+            </motion.div>
 
-          {/* Feature 3 */}
-          <div className="p-12 hover:bg-gray-50 transition-colors">
-            <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <div className="w-1.5 h-1.5 bg-black rounded-full opacity-30" />
+            <div className="md:col-span-5 flex flex-col gap-6">
+              <motion.div
+                variants={fadeUp}
+                whileHover={{ y: -8 }}
+                className="bg-white border p-6 sm:p-8 rounded-3xl shadow-sm"
+              >
+                <h4 className="font-bold mb-2 text-md sm:text-lg">
+                  Client-Centric Collaboration
+                </h4>
+                <p className="text-gray-500 text-md sm:text-lg">
+                  We work as an extension of your team, ensuring transparency, trust, and shared success.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={fadeUp}
+                whileHover={{ y: -8 }}
+                className="bg-white border p-6 sm:p-8 rounded-3xl shadow-sm"
+              >
+                <h4 className="font-bold mb-2 text-md sm:text-lg">
+                  Forward-Thinking Innovation
+                </h4>
+                <p className="text-gray-500 text-md sm:text-lg">
+                  Leveraging modern technologies, we craft solutions that keep you ahead of the competition.
+                </p>
+              </motion.div>
             </div>
-<<<<<<< Updated upstream
-            <h4 className="text-lg font-bold mb-4">Collaborative Ethos</h4>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Your vision is our blueprint. We work synchronously with your team
-              as a true partner.
-=======
-            <h4 className="text-lg font-bold mb-4">
-              {" "}
-              Forward-Thinking Innovation
-            </h4>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Leveraging modern technologies, we craft solutions that keep you
-              ahead of the competition.
->>>>>>> Stashed changes
-            </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Culture Masonry Section */}
-      <section className="px-8 py-24 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-        <div className="order-2 lg:order-1">
-          <h2 className="text-5xl font-extrabold mb-8 leading-tight tracking-tighter">
-<<<<<<< Updated upstream
+      {/* Culture Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="order-1"
+        >
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold mb-6 md:mb-8 leading-snug md:leading-tight"
+          >
             Our Culture of <br />
             Excellence
-          </h2>
-          <p className="text-gray-600 mb-12 text-lg leading-relaxed max-w-lg">
-            Beyond the screens and the code, Zervia is a collective of thinkers,
-            designers, and engineers who share a passion for high-end digital
-            craftsmanship.
-          </p>
-          <div className="grid grid-cols-2 gap-y-12 gap-x-8">
-            {[
-              { val: "98%", lab: "Retention" },
-              { val: "120+", lab: "Dev Experts" },
-              { val: "15+", lab: "Awards" },
-              { val: "500+", lab: "Shipped" },
-=======
-            Driven by
-            <br /> Excellence
-          </h2>
-          <p className="text-gray-600 mb-12 text-lg leading-relaxed max-w-lg">
-            Behind every line of code is a team committed to precision,
-            innovation, and performance. At Zervia, we craft digital experiences
-            that are built to last and designed to lead.
-          </p>
-          <div className="grid grid-cols-2 gap-y-12 gap-x-8">
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-gray-600 mb-10 text-sm sm:text-base md:text-base lg:text-lg leading-relaxed max-w-lg"
+          >
+           Behind every line of code is a team committed to precision, innovation, and performance.
+            At Zervia, we craft digital experiences that are built to last and designed to lead.
+          </motion.p>
+
+          <div className="grid grid-cols-2 gap-6 md:gap-8">
             {[
               { val: "15+", lab: "Years Industry Experience" },
               { val: "20+", lab: "Project Deliveries" },
               { val: "20+", lab: "Team Strength" },
               { val: "97%", lab: "Client Retention Rate" },
->>>>>>> Stashed changes
             ].map((stat, idx) => (
-              <div key={idx} className="border-l-2 border-emerald-500 pl-6">
-                <div className="text-4xl font-black text-black mb-1">
+              <motion.div
+                key={idx}
+                variants={fadeUp}
+                className="border-l-2 border-[#632e87] pl-4"
+              >
+                <div className="text-2xl sm:text-3xl font-black mb-1">
                   {stat.val}
                 </div>
-                <div className="text-[10px] text-emerald-600 font-bold uppercase tracking-[0.2em]">
+                <div className="text-[9px] sm:text-[10px] text-[#632e87] font-bold uppercase tracking-wider">
                   {stat.lab}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Masonry Image Grid */}
-        <div className="order-1 lg:order-2 grid grid-cols-6 grid-rows-6 gap-4 h-[500px]">
-          <div className="col-span-4 row-span-4 rounded-[2rem] overflow-hidden border border-gray-200 relative shadow-sm">
-            <img
+        {/* Masonry Grid */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="order-1 lg:order-2 grid grid-cols-6 grid-rows-6 gap-3 sm:gap-4 h-[300px] sm:h-[400px] lg:h-[500px]"
+        >
+          <motion.div className="col-span-4 row-span-4 rounded-3xl overflow-hidden border shadow-sm">
+            <motion.img
+              whileHover={{ scale: 1.1 }}
               src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700"
-              alt="Team"
+              className="w-full h-full object-cover grayscale hover:grayscale-0"
             />
-          </div>
-          <div className="col-span-2 row-span-3 rounded-[2rem] overflow-hidden border border-gray-200 relative shadow-sm">
-            <img
+          </motion.div>
+
+          <motion.div className="col-span-2 row-span-3 rounded-3xl overflow-hidden border shadow-sm">
+            <motion.img
+              whileHover={{ scale: 1.1 }}
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700"
-              alt="Collaboration"
+              className="w-full h-full object-cover grayscale hover:grayscale-0"
             />
-          </div>
-          <div className="col-span-3 row-span-2 rounded-[2rem] overflow-hidden border border-gray-200 relative shadow-sm">
-            <img
+          </motion.div>
+
+          <motion.div className="col-span-3 row-span-2 rounded-3xl overflow-hidden border shadow-sm">
+            <motion.img
+              whileHover={{ scale: 1.1 }}
               src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700"
-              alt="Office"
+              className="w-full h-full object-cover grayscale hover:grayscale-0"
             />
-          </div>
-          <div className="col-span-3 row-span-3 rounded-[2rem] overflow-hidden border border-gray-200 relative shadow-sm">
-            <img
+          </motion.div>
+
+          <motion.div className="col-span-3 row-span-3 rounded-3xl overflow-hidden border shadow-sm">
+            <motion.img
+              whileHover={{ scale: 1.1 }}
               src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700"
-              alt="Focus"
+              className="w-full h-full object-cover grayscale hover:grayscale-0"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* Footer CTA */}
-      <footer className="bg-gray-50 py-32 px-8 border-t border-gray-100 relative overflow-hidden text-center">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-8 tracking-tighter text-gray-900">
-            Ready to Build Something <br />
-            Extraordinary?
+      {/* Footer */}
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="bg-gray-50 py-20 sm:py-24 px-4 sm:px-6 lg:px-8  text-center"
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+            Your Future in Tech Starts <br /> Here!
           </h2>
-          <p className="text-gray-600 mb-12 text-lg">
-            Let's discuss how our architectural approach can elevate your
-            business.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="bg-emerald-500 text-white px-10 py-4 rounded-2xl font-bold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20">
-              Schedule Consultation
-            </button>
-            <button className="bg-white border border-gray-200 text-black px-10 py-4 rounded-2xl font-bold hover:bg-gray-50 transition-all shadow-sm">
-              View Case Studies
-            </button>
-          </div>
+          
+          <Link
+            href="/Contact"
+            className="bg-[#632e87] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold hover:bg-[#4d2269] transition-all shadow-lg inline-block text-sm sm:text-base"
+          >
+            Schedule Consultation
+          </Link>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 };

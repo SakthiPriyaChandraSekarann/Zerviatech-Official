@@ -1,235 +1,184 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main className="bg-[#f6f6f8] min-h-screen text-gray-800">
+    <main className="bg-[#f6f6f8] min-h-screen text-gray-800 overflow-x-hidden">
+      
       {/* HERO SECTION */}
-      <div className="bg-[#f5f6f8] py-16 px-4">
-  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
+      <div className="bg-[#f5f6f8] py-12 sm:py-16 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-8">
+          <motion.div
+            className="w-full max-w-2xl"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight mb-4 sm:mb-6">
+              Digital Marketing & Growth
+            </h1>
 
-    {/* Left Content */}
-    <div className="flex-1">
-      <p className="text-sm text-gray-500 mb-4 font-medium tracking-wide">
-        SERVICE SPOTLIGHT
-      </p>
+            <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+              We craft data-driven marketing strategies that enhance brand
+              visibility and drive measurable growth.
+            </p>
 
-      <h1 className="text-4xl md:text-5xl font-bold text-[#1c2541] leading-tight mb-6">
-        Digital Marketing & Growth
-
-      </h1>
-
-      <p className="text-gray-600 mb-6 max-w-lg">
-        We transform fragmented data streams into a cohesive architectural
-        vision. Our editorial approach to analytics ensures every insight is
-        actionable, strategic, and visually profound.
-      </p>
-
-      <div className="flex gap-4">
-        <button className="bg-[#2c2f5b] text-white px-6 py-3 rounded-lg hover:opacity-90 transition">
-          Request Assessment →
-        </button>
-
-        <button className="bg-white border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-100 transition">
-          View Case Studies
-        </button>
+            <Link href="/Contact">
+              <button className="bg-[#632e87] text-white px-6 py-3 rounded-lg hover:opacity-90 transition">
+                Request Assessment →
+              </button>
+            </Link>
+          </motion.div>
+        </div>
       </div>
-    </div>
-
-    {/* Right Image */}
-    <div className="flex-1 flex justify-center">
-      <div className="bg-black rounded-xl p-6 w-full max-w-md">
-        <img
-          src="/banner (2).jpeg"
-          alt="analytics"
-          className="rounded-lg w-full opacity-80"
-        />
-      </div>
-    </div>
-
-  </div>
-</div>
 
       {/* CORE CAPABILITIES */}
-      <div className="bg-[#f5f6f8] py-16 px-4">
-  <div className="max-w-7xl mx-auto">
+      <div className="bg-[#f5f6f8] py-12 sm:py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+           <motion.h2
+           className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold mb-2 md:mb-4 leading-snug md:leading-tight"      
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
+            Core Capabilities
+          </motion.h2>
 
-    {/* Heading */}
-    <h2 className="text-3xl font-bold text-gray-800 mb-2">
-      Core Capabilities
-    </h2>
-    <p className="text-gray-500 mb-10 max-w-xl">
-      Four pillars of our editorial data methodology, designed to scale with your architectural complexity.
-    </p>
-
-    {/* Grid */}
-    <div className="grid md:grid-cols-2 gap-6">
-
-      {/* Left Top Card */}
-      <div className="bg-white p-6 rounded-xl shadow-sm">
-        <img
-          src="https://your-url.com/icon1.png"
-          className="w-10 h-10 mb-4"
-          alt="icon"
-        />
-        <h3 className="text-lg font-semibold text-[#1c2541] mb-2">
-          Big Data Processing
-        </h3>
-        <p className="text-gray-600 text-sm mb-4">
-          Infrastructure built for volume. We engineer pipelines that ingest,
-          clean, and structure raw data at scale without sacrificing latency.
-        </p>
-
-        <img
-          src="/card1.jpg"
-          alt="card"
-          className="rounded-lg w-full h-40 object-cover"
-        />
-      </div>
-
-      {/* Right Big Card */}
-      <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between">
-        <div>
-          <img
-            src="https://your-url.com/icon2.png"
-            className="w-10 h-10 mb-4"
-            alt="icon"
-          />
-
-          <h3 className="text-lg font-semibold text-[#1c2541] mb-2">
-            Business Intelligence Dashboards
-          </h3>
-
-          <p className="text-gray-600 text-sm mb-4">
-            Our BI solutions aren’t just displays—they are curated narratives.
-            We design interfaces that allow stakeholders to interrogate data.
+          <p className="text-gray-500 mb-10 max-w-xl text-sm sm:text-base">
+            Driving growth through data-driven strategies.
           </p>
 
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li>✅ Real-time KPI monitoring</li>
-            <li>✅ Custom drill-down architectures</li>
-            <li>✅ Stakeholder-specific reporting views</li>
-          </ul>
-        </div>
+          {/* ✅ FIXED GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto lg:auto-rows-[220px]">
 
-        <img
-          src="/card2.jpg"
-          alt="dashboard"
-          className="rounded-lg w-full h-40 object-cover mt-6"
-        />
+            {/* BIG CARD */}
+            <motion.div className="sm:col-span-2 lg:col-span-2 lg:row-span-2 bg-white p-6 rounded-xl flex flex-col justify-between">
+              <div>
+                <img src="/Marketingicon.png" className="w-10 h-10 mb-4" />
+                <h3 className="text-base sm:text-xl font-semibold mb-2">
+                  Performance Marketing
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600">
+                  Targeted campaigns optimized for ROI.
+                </p>
+              </div>
+
+              <img
+                src="/Marketingimg.jpg"
+                className="rounded-lg w-full h-32 sm:h-40 md:h-52 object-cover mt-4"
+              />
+            </motion.div>
+
+            {/* ANALYTICS */}
+            <motion.div className="bg-white p-6 rounded-xl">
+              <img src="/performance.png" className="w-10 h-10 mb-4" />
+              <h3 className="text-base sm:text-xl font-semibold mb-2">
+                Analytics & Growth
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                Track and optimize campaigns.
+              </p>
+            </motion.div>
+
+            {/* SEO */}
+            <motion.div className="lg:row-span-2 bg-white p-6 rounded-xl flex flex-col justify-between">
+              <div>
+                <img src="/Optimization (SEO).png" className="w-10 h-10 mb-4" />
+                <h3 className="text-base sm:text-xl font-semibold mb-2">
+                  SEO
+                </h3>
+
+                <ul className="text-sm sm:text-base space-y-2">
+                  <li>✅ On-page</li>
+                  <li>✅ Keywords</li>
+                  <li>✅ Content</li>
+                </ul>
+              </div>
+
+              <img
+                src="/seoimg.jpg"
+                className="rounded-lg w-full h-32 object-cover mt-4"
+              />
+            </motion.div>
+
+            {/* SOCIAL */}
+            <motion.div className="sm:col-span-2 lg:col-span-2 bg-[#632e87] text-white p-6 rounded-xl">
+              <img src="/socialmediaicon.png" className="w-10 h-10 mb-4" />
+
+              <h3 className="text-base sm:text-xl font-semibold mb-2">
+                Social Media Marketing
+              </h3>
+
+              <p className="text-sm sm:text-base text-gray-200">
+                Engage your audience with powerful campaigns.
+              </p>
+            </motion.div>
+
+          </div>
+        </div>
       </div>
 
-      {/* Bottom Left Green Card */}
-      <div className="bg-[#0b3d2e] text-white p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <img
-            src="https://your-url.com/icon3.png"
-            className="w-10 h-10 mb-4"
-            alt="icon"
-          />
-
-          <h3 className="text-lg font-semibold mb-2">
-            Predictive Analytics
-          </h3>
-
-          <p className="text-sm text-gray-200">
-            Move from hindsight to foresight with ML models designed for precision forecasting.
-          </p>
-        </div>
-
-        <p className="mt-6 text-sm font-medium">
-          EXPLORE MODELS →
-        </p>
-      </div>
-
-      {/* Bottom Right Small Card */}
-      <div className="bg-white p-6 rounded-xl shadow-sm">
-        <img
-          src="https://your-url.com/icon4.png"
-          className="w-10 h-10 mb-4"
-          alt="icon"
-        />
-
-        <h3 className="text-lg font-semibold text-[#1c2541] mb-2">
-          Data Visualization
-        </h3>
-
-        <p className="text-gray-600 text-sm mb-4">
-          We craft bespoke visual assets that make complexity legible.
-        </p>
-
-        <div className="flex items-center gap-2">
-          <span className="w-6 h-6 bg-indigo-500 rounded-full"></span>
-          <span className="w-6 h-6 bg-green-400 rounded-full"></span>
-          <span className="w-6 h-6 bg-gray-300 rounded-full"></span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
+      {/* APPROACH */}
       {/* APPROACH SECTION */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        
+        <motion.div
+          className="relative w-full h-[220px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
+          <img
+            src="/bannerimages.jpeg"
+            alt="insight"
+            className="w-full h-full object-cover grayscale"
+          />
+        </motion.div>
 
-  {/* Left Image with Overlay */}
-  <div className="relative w-full h-[400px] rounded-xl overflow-hidden">
-    
-    <img
-      src="/bannerimages.jpeg" // 👉 இங்க உன் image path set பண்ணு
-      alt="insight"
-      className="w-full h-full object-cover grayscale"
-    />
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#1c2541] mb-6 sm:mb-8">
+            The Approach to Building Digital Platforms
+          </h2>
 
-    {/* Overlay Card */}
-    <div className="absolute bottom-[-20px] left-6 bg-white p-5 rounded-xl shadow-lg w-60">
-      <p className="text-2xl font-bold text-[#1c2541]">94%</p>
-      <p className="text-xs text-gray-500">
-        Average increase in decision-making speed across our architectural portfolio.
-      </p>
-    </div>
-
-  </div>
-
-  {/* Right Content */}
-  <div>
-    <h2 className="text-3xl font-semibold text-[#1c2541] mb-8">
-      The Architectural Approach to Insight.
-    </h2>
-
-    <div className="space-y-8">
-
-      <div className="flex gap-4">
-        <span className="text-gray-400 font-semibold">01</span>
-        <div>
-          <h4 className="font-semibold text-[#1c2541]">Discovery & Audit</h4>
-          <p className="text-sm text-gray-500">
-            We map your current data ecosystem, identifying silos and structural weaknesses that hinder clarity.
-          </p>
-        </div>
-      </div>
-
-      <div className="flex gap-4">
-        <span className="text-gray-400 font-semibold">02</span>
-        <div>
-          <h4 className="font-semibold text-[#1c2541]">Schema Design</h4>
-          <p className="text-sm text-gray-500">
-            Engineering a robust foundation that ensures data integrity and high-performance querying.
-          </p>
-        </div>
-      </div>
-
-      <div className="flex gap-4">
-        <span className="text-gray-400 font-semibold">03</span>
-        <div>
-          <h4 className="font-semibold text-[#1c2541]">Editorial Narrative</h4>
-          <p className="text-sm text-gray-500">
-            Developing the visual and interactive layer that tells the story hidden within the numbers.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
+          <div className="space-y-6 sm:space-y-8">
+            {[
+              {
+                num: "01",
+                title: "Discovery & Planning",
+                desc: "We understand your business goals, user needs, and technical requirements to define a clear roadmap for your digital platform.",
+              },
+              {
+                num: "02",
+                title: "Architecture & Development",
+                desc: "We design and build scalable, secure, and high-performance web platforms using modern technologies and best practices.",
+              },
+              {
+                num: "03",
+                title: "Deployment & Optimization",
+                desc: "We launch, monitor, and continuously optimize your platform to ensure speed, reliability, and a seamless user experience.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="flex gap-3 sm:gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+              >
+                <div>
+                  <h4 className="font-semibold text-[#1c2541] text-base sm:text-xl">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm sm:text-base text-gray-500">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 }
