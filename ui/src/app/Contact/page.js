@@ -14,6 +14,8 @@ import { FiPhone, FiMail } from "react-icons/fi";
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [type, setType] = useState("");
+  const [phone, setPhone] = useState("");
 
   // ✅ ENTRY ANIMATIONS (On Page Load)
   useEffect(() => {
@@ -272,20 +274,36 @@ export default function ContactPage() {
                   </div>
 
                   {/* 🔽 DROPDOWN ADDED */}
+
                   <select
                     name="inquiryType"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
                     required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base bg-white focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
+                    className={`w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base 
+                    ${type === "" ? "text-gray-500" : "text-black"} 
+                    focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]`}
                   >
-                    <option value="">Select Inquiry Type</option>
+                    <option value="" disabled hidden>
+                      Select Inquiry Type
+                    </option>
                     <option value="services">Services</option>
                     <option value="academy">Academy</option>
                   </select>
-
+            
                   <input
                     name="phone"
                     type="tel"
                     placeholder="Phone Number"
+                    value={phone}
+                    onChange={(e) => {
+                      const value = e.target.value;
+
+                      // allow only numbers & max 10 digits
+                      if (/^\d{0,10}$/.test(value)) {
+                        setPhone(value);
+                      }
+                    }}
                     className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#1e2a5a]"
                   />
 

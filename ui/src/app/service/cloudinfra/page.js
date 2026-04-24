@@ -250,19 +250,19 @@ export default function Home() {
           >
         
 
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-black leading-snug sm:leading-tight mb-4 sm:mb-6">
-              Cloud & Infrastructure <br />
-              Solutions
+            {/* <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-black leading-snug sm:leading-tight mb-4 sm:mb-6"> */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight mb-4 sm:mb-6">
+              Cloud & Infrastructure Solutions
             </h1>
 
-            <p className="text-sm sm:text-base text-gray-600 mb-5 sm:mb-6 max-w-lg mx-auto">
+              <p className="text-sm sm:text-base text-gray-600 mb-6 max-w-md sm:max-w-lg mx-auto">
               We design and manage scalable cloud infrastructures that ensure
               high availability, security, and performance.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link href="/Contact">
-                <button className="w-full sm:w-auto bg-[#632e87] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg hover:opacity-90 transition">
+                <button className="w-full sm:w-auto bg-[#632e87] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:opacity-90 transition text-sm sm:text-base">
                   Request Assessment →
                 </button>
               </Link>
@@ -301,7 +301,7 @@ export default function Home() {
             >
               <div>
                 <img src="/Cloud Architecture.png" className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4" />
-                <h3 className="text-base sm:text-lg font-semibold text-[#1c2541] mb-2">
+                <h3 className="text-base sm:text-xl  font-semibold text-[#1c2541] mb-2">
                   Cloud Architecture Design
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600">
@@ -322,18 +322,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
             >
               <img src="/Security.png" className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4" />
-              <h3 className="text-base sm:text-lg font-semibold text-[#1c2541] mb-2">
+              <h3 className="text-base sm:text-xl  font-semibold text-[#1c2541] mb-2">
                 Security & Monitoring
               </h3>
               <p className="text-sm sm:text-base text-gray-600">
                 Advanced protection and real-time monitoring.
               </p>
 
-              <div className="flex items-center gap-2 mt-4">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 bg-indigo-500 rounded-full"></span>
-                <span className="w-5 h-5 sm:w-6 sm:h-6 bg-green-400 rounded-full"></span>
-                <span className="w-5 h-5 sm:w-6 sm:h-6 bg-gray-300 rounded-full"></span>
-              </div>
             </motion.div>
 
             {/* DevOps */}
@@ -344,7 +339,7 @@ export default function Home() {
             >
               <div>
                 <img src="/deployment.png" className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4" />
-                <h3 className="text-base sm:text-lg font-semibold text-[#1c2541] mb-2">
+                <h3 className="text-base sm:text-xl  font-semibold text-[#1c2541] mb-2">
                   Deployment & DevOps
                 </h3>
 
@@ -369,7 +364,7 @@ export default function Home() {
             >
               <img src="/scalability.png" className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4" />
 
-              <h3 className="text-base sm:text-lg font-semibold mb-2">
+              <h3 className="text-base sm:text-xl font-semibold mb-2">
                 Scalability & Load Management
               </h3>
 

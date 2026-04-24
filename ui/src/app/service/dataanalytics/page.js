@@ -317,7 +317,7 @@ export default function Home() {
             >
               <div>
                 <img src="/Data Engineeringicon.png" className="w-10 h-10 mb-4" />
-                <h3 className="text-lg font-semibold text-[#1c2541] mb-2">
+                <h3 className="text-base sm:text-xl font-semibold text-[#1c2541] mb-2">
                   Data Engineering
                 </h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -338,7 +338,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
             >
               <img src="/Predictive Analyticsicon.png" className="w-10 h-10 mb-4" />
-              <h3 className="text-lg font-semibold text-[#1c2541] mb-2">
+              <h3 className="text-base sm:text-xl font-semibold text-[#1c2541] mb-2">
                 Predictive Analytics
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
@@ -354,10 +354,10 @@ export default function Home() {
             >
               <div>
                 <img src="/Analytics & Insightsicon.png" className="w-10 h-10 mb-4" />
-                <h3 className="text-lg font-semibold text-[#1c2541] mb-2">
+                <h3 className="text-base sm:text-xl font-semibold text-[#1c2541] mb-2">
                   Analytics & Insights
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-sm sm:text-base mb-4">
                   Turn data into meaningful insights.
                 </p>
 
@@ -382,7 +382,7 @@ export default function Home() {
             >
               <img src="/Business icon.png" className="w-10 h-10 mb-4" />
 
-              <h3 className="text-lg font-semibold mb-2">
+              <h3 className="text-base sm:text-xl font-semibold mb-2">
                 Business Intelligence Dashboards
               </h3>
 
@@ -395,7 +395,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* APPROACH */}
         {/* APPROACH SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         

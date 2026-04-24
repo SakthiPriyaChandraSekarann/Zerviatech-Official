@@ -118,7 +118,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* APPROACH */}
       {/* APPROACH SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         
