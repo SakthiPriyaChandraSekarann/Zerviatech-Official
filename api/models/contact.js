@@ -1,10 +1,33 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
 
-const contactSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: String },
-  message: { type: String, required: true }
-}, { timestamps: true });
+const Contact = sequelize.define(
+  "Contact",
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { isEmail: true },
+    },
+    inquiryType: {
+      type: DataTypes.ENUM("services", "academy"),
+      allowNull: false,
+    },
+    phone: {
+      type: DataTypes.STRING,
+    },
+    message: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('Contact', contactSchema);
+module.exports = Contact;

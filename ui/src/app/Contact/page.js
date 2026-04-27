@@ -123,29 +123,59 @@ export default function ContactPage() {
     anime({ targets: el, scale: 1, duration: 200, easing: "easeOutQuad" });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+
+  //   const form = e.currentTarget;
+  //   const formData = new FormData(form);
+  //   const data = Object.fromEntries(formData);
+
+  //   try {
+  //     const result = await sendContactMessage(data);
+
+  //     if (result.success) {
+  //       setShowSuccess(true);
+  //       form.reset();
+  //       // Overlay clears automatically after 5 seconds
+  //       setTimeout(() => setShowSuccess(false), 5000);
+  //     }
+  //   } catch (error) {
+  //     alert("❌ Failed to send message: " + error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData);
 
-    try {
-      const result = await sendContactMessage(data);
+  try {
+    const result = await sendContactMessage(data);
 
-      if (result.success) {
-        setShowSuccess(true);
-        form.reset();
-        // Overlay clears automatically after 5 seconds
-        setTimeout(() => setShowSuccess(false), 5000);
-      }
-    } catch (error) {
-      alert("❌ Failed to send message: " + error.message);
-    } finally {
-      setLoading(false);
+    if (result.success) {
+      setShowSuccess(true);
+      form.reset();
+
+      // ✅ reset phone state also
+      setPhone("");
+      setType("");
+
+      setTimeout(() => setShowSuccess(false), 5000);
     }
-  };
+  } catch (error) {
+    alert("❌ Failed to send message: " + error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="relative overflow-hidden min-h-screen">
