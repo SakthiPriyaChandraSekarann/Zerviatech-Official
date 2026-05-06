@@ -5,6 +5,9 @@ require("dotenv").config();
 const sequelize = require("./config/db");
 const contactRoutes = require("./routes/contactRoutes");
 
+const Career = require("./models/Career"); 
+const Contact = require("./models/Contact");
+
 const app = express();
 
 // Middleware
