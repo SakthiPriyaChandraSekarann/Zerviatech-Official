@@ -33,6 +33,21 @@ const blogs = [
     category: "TECH",
     image: "/digitalblog.png",
   },
+
+  {
+    path: "blogfive",
+    title:
+      "Custom Software Solutions for Lift Manufacturing Companies",
+    category: "TECH",
+    image: "/lift.jpeg",
+  },
+  {
+    path: "blogsix",
+    title:
+      "Transform Your Business with Powerful eCommerce Solutions",
+    category: "TECH",
+    image: "/ecom.jpeg",
+  },
 ];
 
 // Animation Variants

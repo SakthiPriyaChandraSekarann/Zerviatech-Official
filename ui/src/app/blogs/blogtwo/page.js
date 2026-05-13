@@ -58,13 +58,25 @@ export default function BlogDetail() {
         }}
       >
         {[
-          "In today's hyper-competitive digital arena, UI/UX and graphic design fuse into a powerhouse duo, crafting immersive brand experiences that captivate and convert.",
-          "Imagine interfaces that don't just look stunning—they pulse with purpose, where every pixel whispers intuition and every interaction sparks joy.",
-          "Graphic design weaves emotional magic through bold color palettes that evoke trust, typography that commands attention, and imagery that tells unforgettable stories.",
-          "Meanwhile, UX masters the art of frictionless journeys, prioritizing usability, inclusivity for diverse global audiences, and lightning-fast navigation that anticipates user needs. Together, they birth products that transcend beauty: meaningful masterpieces blending aesthetics with razor-sharp functionality.",
-          "Yet true mastery demands ditching fleeting trends for deep user research, behavioral insights, and narrative-driven strategies. Consistency across touchpoints builds unbreakable trust; clarity eliminates confusion; empathy turns users into loyal advocates.",
-          "The magic? Invisible design—seamless enough to vanish, potent enough to linger. It empowers effortless goal-crushing while forging indelible brand bonds that boost engagement sky-high. Harness iterative feedback loops and agile processes to evolve with tech leaps and shifting expectations, delivering globally professional experiences that don't just compete—they dominate.",
-        ].map((text, i) => (
+  `In today's hyper-competitive digital arena, UI/UX and graphic design fuse into a powerhouse duo, crafting immersive brand experiences that captivate and convert. Imagine interfaces that don't just look stunning—they pulse with purpose, where every pixel whispers intuition and every interaction sparks joy.`,
+
+  `Graphic design weaves emotional magic through bold color palettes that evoke trust, typography that commands attention, and imagery that tells unforgettable stories. Meanwhile, UX masters the art of frictionless journeys, prioritizing usability, inclusivity for diverse global audiences, and lightning-fast navigation that anticipates user needs.`,
+
+  `Together, they birth products that transcend beauty by blending aesthetics with razor-sharp functionality. True mastery demands moving beyond fleeting trends and focusing on deep user research, behavioral insights, and narrative-driven strategies that create meaningful digital experiences.`,
+
+  `Consistency across touchpoints builds trust, clarity eliminates confusion, and empathy transforms users into loyal advocates. Invisible design becomes the ultimate goal—seamless enough to feel natural while powerful enough to leave a lasting impression on users.`,
+
+  `Iterative feedback loops and agile design processes allow teams to evolve with changing technologies and customer expectations. This approach helps businesses deliver globally professional experiences that improve engagement, usability, and customer satisfaction.`,
+
+  `In addition, modern UI/UX and graphic design play a critical role in shaping how users perceive credibility, professionalism, and innovation in the digital world. A thoughtfully designed interface can significantly influence customer decisions, increase retention rates, and improve overall satisfaction.`,
+
+  `From mobile applications and websites to branding assets and digital campaigns, every visual element contributes to a unified user experience. Motion graphics, micro-interactions, and responsive layouts further enhance engagement by making digital products feel dynamic, interactive, and visually compelling.`,
+
+  `Accessibility-focused design also ensures that products remain usable for people of all abilities, expanding reach and inclusivity across diverse audiences. Designers must continuously adapt to advancements in AI, AR, and immersive technologies to create future-ready experiences.`,
+
+  `Businesses that invest in strategic, user-centered design gain a competitive advantage by delivering memorable digital experiences that inspire trust, strengthen customer loyalty, and drive long-term success in an evolving digital landscape.`,
+]
+        .map((text, i) => (
           <motion.p
             key={i}
             variants={{
