@@ -82,12 +82,6 @@ export default function BlogsPage() {
       transition={{ duration: 0.6 }}
     >
       {/* Header */}
-      {/* <div className="mb-10  -ml-17 ">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#552e82]">
-          Latest News
-        </h1>
-      </div> */}
-
       <div className="mb-6 ml-0 sm:mb-10 sm:-ml-6 md:ml-3 lg:ml-5 xl:-ml-17 text-center sm:text-left">
         <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-[#552e82] leading-tight">
           Latest News
